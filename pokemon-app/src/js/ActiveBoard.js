@@ -1,66 +1,48 @@
 import React, { Component } from 'react';
 import '../css/styles.css';
 
-// var images = require.context('../images/pokemon', true, /.*\.png$/);
-
-function importAll(r) {
-  console.log(r.keys());
-  return r.keys().map(r);
-}
-
-function naturalCompare(a, b) {
-    var ax = [], bx = [];
-
-    a.replace(/(\d+)|(\D+)/g, function(_, $1, $2) { ax.push([$1 || Infinity, $2 || ""]) });
-    b.replace(/(\d+)|(\D+)/g, function(_, $1, $2) { bx.push([$1 || Infinity, $2 || ""]) });
-
-    while(ax.length && bx.length) {
-        var an = ax.shift();
-        var bn = bx.shift();
-        var nn = (an[0] - bn[0]) || an[1].localeCompare(bn[1]);
-        if(nn) return nn;
-    }
-
-    return ax.length - bx.length;
-}
-
-var images = importAll(require.context('../images/pokemon', true, /.*\.png$/));
-
-images.sort(naturalCompare);
-
 class ActiveBoard extends React.Component {
 
   constructor(props) {
   super(props);
 
+  console.log(props);
+
+  this.state = {
+    grid1: this.props.pokemon[0],
+    grid2: this.props.pokemon[1],
+    grid3: this.props.pokemon[2],
+    grid4: this.props.pokemon[3],
+    grid5: this.props.pokemon[4],
+    grid6: this.props.pokemon[5],
+  }
 }
 
   render() {
-    console.log(images);
+
     return (
       <div className="grid">
-
         <div className="grid-row">
           <div className="grid-column top left">
-              <img className="grid-image" src={images[0]} />
+              <img className="grid-image" src={this.state.grid1} />
           </div>
           <div className="grid-column top middle">
-              <img className="grid-image" src={images[0]} />
+              <img className="grid-image" src={this.state.grid2} />
           </div>
           <div className="grid-column top right">
-              <img className="grid-image" src={images[0]} />
+              <img className="grid-image" src={this.state.grid3} />
           </div>
         </div>
 
         <div className="grid-row">
           <div className="grid-column bottom left">
-              <img className="grid-image" src={images[0]} />
+              <img className="grid-image" src={this.state.grid4} />
           </div>
           <div className="grid-column bottom middle">
-              <img className="grid-image" src={images[0]} />
+              <img className="grid-image" src={this.state.grid5} />
           </div>
           <div className="grid-column bottom right">
-              <img className="grid-image" src={images[0]} />
+              <img className="grid-image" src={this.state.grid6} />
           </div>
         </div>
 
