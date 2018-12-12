@@ -6,6 +6,8 @@ import MyPokemon from './js/MyPokemon';
 import NavBar from './js/NavBar';
 import AddPokemon from './js/AddPokemon';
 
+let listOfPokemon = require('./data/listOfPokemon.json');
+
 class App extends Component {
 
   constructor(props) {
@@ -37,7 +39,7 @@ class App extends Component {
         </div>
         <div className="my-pokemon-container">
           <MyPokemon showAddPokemonDialog={() => this.showAddPokemonDialog()}/>
-          <AddPokemon />
+          <AddPokemon listOfPokemon={listOfPokemon.ListOfPokemon}/>
         </div>
       </div>
     );

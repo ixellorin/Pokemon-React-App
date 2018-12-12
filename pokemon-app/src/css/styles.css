@@ -62,6 +62,7 @@ body {
   grid-template-columns: auto 24vw;
   grid-template-areas: 'active-pokemon my-pokemon';
   align-content: center;
+  max-height: 100vh;
 }
 
 .active-pokemon-container {
@@ -164,7 +165,7 @@ body {
 }
 
 .my-pokemon-buttons-container {
-  width: 100%;
+  width: 98.5%;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -190,16 +191,56 @@ body {
   width: 50%;
 }
 
-.my-pokemon-list {
+.add-pokemon-list-item{
   list-style-type: none;
+  left: 0;
   width: 100%;
 }
 
+.add-pokemon-list{
+  padding-left: 0;
+  width: 100%;
+}
 
 .add-pokemon-dialog {
+  background-color: #4CAF50;
+  border: 5px solid #000000;
+  border-radius: 5px;
   display: none;
   z-index: 2;
   position: absolute;
   top: 0px;
-  padding-left: 15px;
+  padding-left: 0;
+  max-height: 44vw;
+  width: 97%;
+  overflow-y: scroll;
+}
+
+.add-pokemon-list-button {
+  background-color: grey;
+  border: 5px solid #000000;
+  border-radius: 5px;
+  padding: 5px 10px;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
