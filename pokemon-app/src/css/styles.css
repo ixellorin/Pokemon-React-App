@@ -59,7 +59,7 @@ body {
   text-align: left;
   background-color: #0084B4;
   display: grid;
-  grid-template-columns: 72vw 28vw;
+  grid-template-columns: auto 24vw;
   grid-template-areas: 'active-pokemon my-pokemon';
   align-content: center;
 }
@@ -70,6 +70,12 @@ body {
 
 .my-pokemon-container {
   grid-area: 'my-pokemon';
+  position: relative;
+}
+
+.my-pokemon {
+  height: 100%;
+  width: 100%;
 }
 
 .grid-row {
@@ -139,16 +145,29 @@ body {
   display: block;
   margin: 0;
   min-width: 250px;
-  width: 22vw;
-}
+  width: 100%;
 
-.my-pokemon {
-  display: inline-block;
 }
 
 .button {
   font-family: inherit;
   color: inherit;
+  outline: none;
+}
+
+.my-pokemon {
+  border-left: 10px solid #313131;
+  margin-right: 0px;
+  position: relative;
+  display: inline-block;
+  height: 100%
+}
+
+.my-pokemon-buttons-container {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .my-pokemon-buttons {
@@ -158,16 +177,29 @@ body {
   text-align: center;
   text-decoration: none;
   display: inline-block;
+
 }
 
 .add-pokemon.button {
   background-color: #4CAF50;
+  width: 50%;
 }
 
 .remove-pokemon-button {
   background-color: #FF3300;
+  width: 50%;
 }
 
 .my-pokemon-list {
   list-style-type: none;
+  width: 100%;
+}
+
+
+.add-pokemon-dialog {
+  display: none;
+  z-index: 2;
+  position: absolute;
+  top: 0px;
+  padding-left: 15px;
 }

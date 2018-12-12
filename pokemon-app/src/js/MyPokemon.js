@@ -18,20 +18,27 @@ var removePokemonButton = classNames({
 
 class MyPokemon extends React.Component {
 
+  constructor(props) {
+    super(props);
+  }
+
   render() {
+
     return (
-      <div className="my-pokemon">
-        <h1>My Pokemon</h1>
-          <MyPokemonEntry name="Chansey"/>
-          <MyPokemonEntry name="Dodrio"/>
-          <MyPokemonEntry name="Lapras"/>
-          <MyPokemonEntry name="Nidoran"/>
-          <MyPokemonEntry name="Spearow"/>
-          <MyPokemonEntry name="Clefable"/>
-        <button className={addPokemonButton}>Add +</button>
-        <button className={removePokemonButton}>Remove +</button>
-      </div>
-    );
+        <div className="my-pokemon">
+          <h1>My Pokemon</h1>
+            <MyPokemonEntry name="Chansey"/>
+            <MyPokemonEntry name="Dodrio"/>
+            <MyPokemonEntry name="Lapras"/>
+            <MyPokemonEntry name="Nidoran"/>
+            <MyPokemonEntry name="Spearow"/>
+            <MyPokemonEntry name="Clefable"/>
+          <div className="my-pokemon-buttons-container">
+            <button className={addPokemonButton} onClick={this.props.showAddPokemonDialog}>Add +</button>
+            <button className={removePokemonButton}>Remove +</button>
+          </div>
+        </div>
+      );
   }
 }
 

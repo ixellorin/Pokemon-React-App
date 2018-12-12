@@ -4,6 +4,7 @@ import './App.css';
 import ActiveBoard from './js/ActiveBoard';
 import MyPokemon from './js/MyPokemon';
 import NavBar from './js/NavBar';
+import AddPokemon from './js/AddPokemon';
 
 class App extends Component {
 
@@ -12,9 +13,19 @@ class App extends Component {
     const filled = Array(6).fill(null);
     fillArrayWithPokemon(filled);
     this.state = {
-      pokemon: filled
+      pokemon: filled,
+      showAddPokemonDialog: false,
     }
-    console.log(this.state.pokemon);
+  }
+
+  showAddPokemonDialog() {
+    console.log("Showing add pokemon dialog");
+    var addPokemonDialog = document.getElementById("add-pokemon-dialog");
+    addPokemonDialog.style.display = (addPokemonDialog.style.display == "block") ? "none" : "block";
+    this.setState({
+      pokemon: this.state.pokemon,
+      showAddPokemonDialog: !this.state.showAddPokemonDialog,
+    });
   }
 
   render() {
@@ -25,7 +36,8 @@ class App extends Component {
           <ActiveBoard pokemon={this.state.pokemon}/>
         </div>
         <div className="my-pokemon-container">
-          <MyPokemon />
+          <MyPokemon showAddPokemonDialog={() => this.showAddPokemonDialog()}/>
+          <AddPokemon />
         </div>
       </div>
     );

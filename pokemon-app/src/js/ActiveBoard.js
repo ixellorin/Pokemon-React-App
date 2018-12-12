@@ -6,8 +6,6 @@ class ActiveBoard extends React.Component {
   constructor(props) {
   super(props);
 
-  console.log(props);
-
   this.state = {
     grid1: this.props.pokemon[0],
     grid2: this.props.pokemon[1],
