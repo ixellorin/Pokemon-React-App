@@ -19,7 +19,7 @@ class ActiveBoard extends React.Component {
   render() {
 
     return (
-      <div className="grid">
+      <div className="grid" id="grid">
         <div className="grid-row">
           <div className="grid-column top left">
               <img className="grid-image" src={this.state.grid1} />

@@ -1,5 +1,5 @@
 {
-  "ListOfPokemon": [
+  "listOfPokemon": [
     {
         "name": "Bulbasaur",
         "id": 1

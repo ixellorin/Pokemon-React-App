@@ -6,18 +6,29 @@ import MyPokemon from './js/MyPokemon';
 import NavBar from './js/NavBar';
 import AddPokemon from './js/AddPokemon';
 
-let listOfPokemon = require('./data/listOfPokemon.json');
 
 class App extends Component {
 
   constructor(props) {
     super(props);
+    let listOfPokemon = initPokemonList();
+    let myPokemon = initMyPokemon();
     const filled = Array(6).fill(null);
+    this.addPokemon = this.addPokemon.bind(this);
     fillArrayWithPokemon(filled);
+
+    console.log(myPokemon);
     this.state = {
       pokemon: filled,
+      myPokemon: myPokemon.myPokemon,
+      listOfPokemon: listOfPokemon.listOfPokemon,
       showAddPokemonDialog: false,
-    }
+      activePokemonHeight: null,
+      myPokemonHeight: null,
+    };
+
+    console.log(this.state.myPokemon);
+    // this.updateDimensions = this.updateDimensions.bind(this);
   }
 
   showAddPokemonDialog() {
@@ -30,16 +41,40 @@ class App extends Component {
     });
   }
 
+  addPokemon(name, id) {
+    var newList = this.state.myPokemon.slice();
+    newList.push({name: name, id:id});
+    this.setState({
+      myPokemon: newList
+    });
+
+  }
+
+  // componentDidMount() {
+  //   // Additionally I could have just used an arrow function for the binding `this` to the component...
+  //   window.addEventListener("resize", this.updateDimensions);
+  // }
+  //
+  // updateDimensions() {
+  //   document.getElementById("my-pokemon-container").style.maxHeight = document.getElementById("grid").style.maxHeight;
+  //
+  //   console.log(document.getElementById("my-pokemon-container").style);
+  // }
+  //
+  // componentWillUnmount() {
+  //   window.removeEventListener("resize", this.updateDimensions);
+  // }
+
   render() {
 
     return (
       <div className="board">
-        <div className="active-pokemon-container">
-          <ActiveBoard pokemon={this.state.pokemon}/>
+        <div id="active-pokemon-container" className="active-pokemon-container">
+          <ActiveBoard pokemon={this.state.pokemon} ref={ (activePokemonContainer) => this.activePokemonContainer = activePokemonContainer}/>
         </div>
-        <div className="my-pokemon-container">
-          <MyPokemon showAddPokemonDialog={() => this.showAddPokemonDialog()}/>
-          <AddPokemon listOfPokemon={listOfPokemon.ListOfPokemon}/>
+        <div id="my-pokemon-container" className="my-pokemon-container"  ref={ (myPokemonContainer) => this.myPokemonContainer = myPokemonContainer}>
+          <MyPokemon showAddPokemonDialog={() => this.showAddPokemonDialog()} myPokemon={this.state.myPokemon}/>
+          <AddPokemon addPokemon={this.addPokemon} listOfPokemon={this.state.listOfPokemon}/>
         </div>
       </div>
     );
@@ -76,5 +111,22 @@ function fillArrayWithPokemon(array) {
     }
   }
 
+function initMyPokemon() {
+  if (localStorage.getItem('myPokemon') == null) {
+    console.log('Fetching my pokemon...');
+    localStorage.setItem('myPokemon', JSON.stringify(require('./data/myPokemon.json')));
+  }
+  console.log(JSON.parse(localStorage.getItem('myPokemon')));
+  return JSON.parse(localStorage.getItem('myPokemon'));
+}
+
+function initPokemonList() {
+  if (localStorage.getItem('listOfPokemon') == null) {
+    console.log('Fetching all pokemon...');
+    localStorage.setItem('listOfPokemon', JSON.stringify(require('./data/listOfPokemon.json')));
+  }
+  console.log(JSON.parse(localStorage.getItem('listOfPokemon')));
+  return JSON.parse(localStorage.getItem('listOfPokemon'));
+}
 
 export default App;
