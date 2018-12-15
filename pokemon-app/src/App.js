@@ -67,13 +67,13 @@ class App extends Component {
     }
   }
 
-  removePokemon(name, id) {
+  removePokemon(index) {
     var newList = this.state.myPokemon.slice();
-
-    newList.push({name: name, id:id});
+    newList.splice(index, 1);
     this.setState({
       myPokemon: newList
-    });
+    })
+
   }
 
   // componentDidMount() {
@@ -99,7 +99,7 @@ class App extends Component {
           <ActiveBoard pokemon={this.state.pokemon} ref={ (activePokemonContainer) => this.activePokemonContainer = activePokemonContainer}/>
         </div>
         <div id="my-pokemon-container" className="my-pokemon-container"  ref={ (myPokemonContainer) => this.myPokemonContainer = myPokemonContainer}>
-          <MyPokemon toggleRemovePokemon={() => this.toggleRemovePokemon()} showAddPokemonDialog={() => this.showAddPokemonDialog()}  myPokemon={this.state.myPokemon}/>
+          <MyPokemon toggleRemovePokemon={() => this.toggleRemovePokemon()} showAddPokemonDialog={() => this.showAddPokemonDialog()} removePokemon={() => this.removePokemon()} myPokemon={this.state.myPokemon}/>
           <AddPokemon addPokemon={this.addPokemon} listOfPokemon={this.state.listOfPokemon}/>
         </div>
       </div>
