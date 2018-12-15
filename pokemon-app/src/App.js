@@ -22,6 +22,7 @@ class App extends Component {
       myPokemon: myPokemon.myPokemon,
       listOfPokemon: listOfPokemon.listOfPokemon,
       showAddPokemonDialog: false,
+      removePokemonEnabled: false,
       activePokemonHeight: null,
       myPokemonHeight: null,
     };
@@ -32,11 +33,11 @@ class App extends Component {
   showAddPokemonDialog() {
     console.log("Showing add pokemon dialog");
     var addPokemonDialog = document.getElementById("add-pokemon-dialog");
-    addPokemonDialog.style.display = (addPokemonDialog.style.display == "block") ? "none" : "block";
     this.setState({
       pokemon: this.state.pokemon,
       showAddPokemonDialog: !this.state.showAddPokemonDialog,
     });
+    addPokemonDialog.style.display = this.state.showAddPokemonDialog ? "block" : "none";
   }
 
   addPokemon(name, id) {
@@ -46,6 +47,33 @@ class App extends Component {
       myPokemon: newList
     });
 
+  }
+
+  toggleRemovePokemon() {
+    console.log("Enabling remove pokemon");
+
+    this.setState({
+      removePokemonEnabled: !this.state.removePokemonEnabled,
+    })
+
+    var removePokemonButtons = document.getElementsByClassName("remove-entry-button");
+
+    if (removePokemonButtons !== null) {
+      for (let button of removePokemonButtons) {
+        console.log(this.state.removePokemonEnabled);
+        button.style.display = (this.state.removePokemonEnabled) ? "inline" : "none";
+        console.log(button.style.display);
+      }
+    }
+  }
+
+  removePokemon(name, id) {
+    var newList = this.state.myPokemon.slice();
+
+    newList.push({name: name, id:id});
+    this.setState({
+      myPokemon: newList
+    });
   }
 
   // componentDidMount() {
@@ -71,7 +99,7 @@ class App extends Component {
           <ActiveBoard pokemon={this.state.pokemon} ref={ (activePokemonContainer) => this.activePokemonContainer = activePokemonContainer}/>
         </div>
         <div id="my-pokemon-container" className="my-pokemon-container"  ref={ (myPokemonContainer) => this.myPokemonContainer = myPokemonContainer}>
-          <MyPokemon showAddPokemonDialog={() => this.showAddPokemonDialog()} myPokemon={this.state.myPokemon}/>
+          <MyPokemon toggleRemovePokemon={() => this.toggleRemovePokemon()} showAddPokemonDialog={() => this.showAddPokemonDialog()}  myPokemon={this.state.myPokemon}/>
           <AddPokemon addPokemon={this.addPokemon} listOfPokemon={this.state.listOfPokemon}/>
         </div>
       </div>
@@ -114,7 +142,7 @@ function initMyPokemon() {
     console.log('Fetching my pokemon...');
     localStorage.setItem('myPokemon', JSON.stringify(require('./data/myPokemon.json')));
   }
-  
+
   return JSON.parse(localStorage.getItem('myPokemon'));
 }
 
