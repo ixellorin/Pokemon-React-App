@@ -17,7 +17,6 @@ class App extends Component {
     this.addPokemon = this.addPokemon.bind(this);
     fillArrayWithPokemon(filled);
 
-    console.log(myPokemon);
     this.state = {
       pokemon: filled,
       myPokemon: myPokemon.myPokemon,
@@ -27,7 +26,6 @@ class App extends Component {
       myPokemonHeight: null,
     };
 
-    console.log(this.state.myPokemon);
     // this.updateDimensions = this.updateDimensions.bind(this);
   }
 
@@ -116,7 +114,7 @@ function initMyPokemon() {
     console.log('Fetching my pokemon...');
     localStorage.setItem('myPokemon', JSON.stringify(require('./data/myPokemon.json')));
   }
-  console.log(JSON.parse(localStorage.getItem('myPokemon')));
+  
   return JSON.parse(localStorage.getItem('myPokemon'));
 }
 
@@ -125,7 +123,7 @@ function initPokemonList() {
     console.log('Fetching all pokemon...');
     localStorage.setItem('listOfPokemon', JSON.stringify(require('./data/listOfPokemon.json')));
   }
-  console.log(JSON.parse(localStorage.getItem('listOfPokemon')));
+
   return JSON.parse(localStorage.getItem('listOfPokemon'));
 }
 

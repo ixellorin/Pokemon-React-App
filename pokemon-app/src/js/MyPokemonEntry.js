@@ -17,14 +17,16 @@ var removePokemonButton = classNames({
 function MyPokemonEntry(props) {
   return (
     <div className="my-pokemon-entry">
-        <img className="my-pokemon-entry-image" src={myPokemonImages[2]} />
+        <img className="my-pokemon-entry-image" src={myPokemonImages[props.id]} />
       {props.name}
     </div>
   );
 }
 
 function importAll(r) {
-  return r.keys().map(r);
+  let images = {};
+  r.keys().map((item, index) => { images[item.replace('./', '').replace('.png', '')] = r(item); });
+  return images;
 }
 
 function naturalCompare(a, b) {
@@ -43,6 +45,6 @@ function naturalCompare(a, b) {
     return ax.length - bx.length;
 }
 
-var myPokemonImages = importAll(require.context('../images/pokemon/myPokemonIcons', true, /.*\.png$/)).sort(naturalCompare);
+var myPokemonImages = importAll(require.context('../images/pokemon/myPokemonIcons', true, /.*\.png$/));
 
 export default MyPokemonEntry;

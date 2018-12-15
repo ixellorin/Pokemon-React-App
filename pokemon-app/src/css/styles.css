@@ -204,6 +204,10 @@ body {
   overflow-y: scroll;
 }
 
+.my-pokemon-entry-image {
+  height: 50px;
+}
+
 
 .add-pokemon.button {
   background-color: #4CAF50;

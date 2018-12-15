@@ -23,7 +23,7 @@ class MyPokemon extends React.Component {
   render() {
     var myPokemon = this.props.myPokemon;
     var buttonsList = myPokemon.map(function(pokemon) {
-      return <MyPokemonEntry name={pokemon.name}/>
+      return <MyPokemonEntry id={pokemon.id} name={pokemon.name}/>
     });
 
     return (
