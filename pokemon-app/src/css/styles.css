@@ -116,6 +116,9 @@ body {
   background-image: linear-gradient(#CCCCCC, #F2F2F2 10%, #CCCCCC);
   margin-top: 0px;
   margin-bottom: 0px;
+  width: 100%;
+  min-width: 250px;
+  min-height: 250px;
 }
 
 .grid-column.top {

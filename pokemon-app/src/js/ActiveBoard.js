@@ -7,12 +7,12 @@ class ActiveBoard extends React.Component {
   super(props);
 
   this.state = {
-    grid1: this.props.pokemon[0],
-    grid2: this.props.pokemon[1],
-    grid3: this.props.pokemon[2],
-    grid4: this.props.pokemon[3],
-    grid5: this.props.pokemon[4],
-    grid6: this.props.pokemon[5],
+    grid1: null,
+    grid2: null,
+    grid3: null,
+    grid4: null,
+    grid5: null,
+    grid6: null,
   }
 }
 

@@ -17,16 +17,18 @@ class App extends Component {
     const filled = Array(6).fill(null);
     this.addPokemon = this.addPokemon.bind(this);
     this.removePokemon = this.removePokemon.bind(this);
+    this.addActivePokemon = this.addActivePokemon.bind(this);
     fillArrayWithPokemon(filled);
 
     this.state = {
       pokemon: filled,
       myPokemon: myPokemon,
       listOfPokemon: listOfPokemon.listOfPokemon,
+      activePokemon: [],
       showAddPokemonDialog: false,
       removePokemonEnabled: false,
-      activePokemonHeight: null,
-      myPokemonHeight: null,
+      // activePokemonHeight: null,
+      // myPokemonHeight: null,
     };
 
     // this.updateDimensions = this.updateDimensions.bind(this);
@@ -69,6 +71,38 @@ class App extends Component {
       }
     });
 
+  }
+
+  addActivePokemon(pokemon) {
+
+    if (this.state.activePokemon.length == 6) {
+      return;
+    } else {
+      var newActivePokemon = this.state.activePokemon.slice();
+      this.setState({
+        activePokemon: newActivePokemon,
+      }, () => {
+        pokemon.setActive();
+      });
+    }
+
+  }
+
+  removeActivePokemon(pokemon) {
+    var newActivePokemon = this.state.activePokemon.slice();
+
+    for (var i = 0; i < this.state.newActivePokemon.length; i++) {
+      if (pokemon == this.state.myPokemon[i]) {
+        newActivePokemon.splice(i, 1);
+        break;
+      }
+    }
+
+    this.setState({
+      activePokemon: newActivePokemon,
+    }, () => {
+      pokemon.setInactive();
+    });
   }
 
   removePokemon(pokemon) {
@@ -119,6 +153,8 @@ class App extends Component {
       </div>
     );
   }
+
+
 }
 
 function importAll(r) {
