@@ -38,8 +38,10 @@ class App extends Component {
     this.setState({
       pokemon: this.state.pokemon,
       showAddPokemonDialog: !this.state.showAddPokemonDialog,
+    }, () => {
+      addPokemonDialog.style.display = this.state.showAddPokemonDialog ? "block" : "none";
     });
-    addPokemonDialog.style.display = this.state.showAddPokemonDialog ? "block" : "none";
+
   }
 
   addPokemon(name, id) {
@@ -48,7 +50,6 @@ class App extends Component {
     this.setState({
       myPokemon: newList
     });
-
   }
 
   toggleRemovePokemon() {
@@ -56,17 +57,18 @@ class App extends Component {
 
     this.setState({
       removePokemonEnabled: !this.state.removePokemonEnabled,
-    })
+    }, () => {
+      var removePokemonButtons = document.getElementsByClassName("remove-entry-button");
 
-    var removePokemonButtons = document.getElementsByClassName("remove-entry-button");
-
-    if (removePokemonButtons !== null) {
-      for (let button of removePokemonButtons) {
-        // console.log(this.state.removePokemonEnabled);
-        button.style.display = (this.state.removePokemonEnabled) ? "inline" : "none";
-        // console.log(button.style.display);
+      if (removePokemonButtons !== null) {
+        for (let button of removePokemonButtons) {
+          // console.log(this.state.removePokemonEnabled);
+          button.style.display = (this.state.removePokemonEnabled) ? "inline" : "none";
+          // console.log(button.style.display);
+        }
       }
-    }
+    });
+
   }
 
   removePokemon(pokemon) {
