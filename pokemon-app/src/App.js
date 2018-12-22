@@ -5,11 +5,12 @@ import ActiveBoard from './js/ActiveBoard';
 import MyPokemon from './js/MyPokemon';
 import NavBar from './js/NavBar';
 import AddPokemon from './js/AddPokemon';
-
+import Pokemon from './js/Pokemon';
 
 class App extends Component {
 
   constructor(props) {
+
     super(props);
     let listOfPokemon = initPokemonList();
     let myPokemon = initMyPokemon();
@@ -19,7 +20,7 @@ class App extends Component {
 
     this.state = {
       pokemon: filled,
-      myPokemon: myPokemon.myPokemon,
+      myPokemon: myPokemon,
       listOfPokemon: listOfPokemon.listOfPokemon,
       showAddPokemonDialog: false,
       removePokemonEnabled: false,
@@ -42,7 +43,7 @@ class App extends Component {
 
   addPokemon(name, id) {
     var newList = this.state.myPokemon.slice();
-    newList.push({name: name, id:id});
+    newList.push(new Pokemon(name, id));
     this.setState({
       myPokemon: newList
     });
@@ -60,20 +61,33 @@ class App extends Component {
 
     if (removePokemonButtons !== null) {
       for (let button of removePokemonButtons) {
-        console.log(this.state.removePokemonEnabled);
+        // console.log(this.state.removePokemonEnabled);
         button.style.display = (this.state.removePokemonEnabled) ? "inline" : "none";
-        console.log(button.style.display);
+        // console.log(button.style.display);
       }
     }
   }
 
-  removePokemon(index) {
-    var newList = this.state.myPokemon.slice();
-    newList.splice(index, 1);
-    this.setState({
-      myPokemon: newList
-    })
-
+  removePokemon(pokemon) {
+    if (pokemon) {
+      console.log("yes");
+    } else {
+      console.log("no");
+    }
+    // var newList = this.state.myPokemon.slice();
+    // for (var i = 0; i < this.state.myPokemon.length; i++) {
+    //   console.log(pokemon);
+    //   console.log(this.state.myPokemon[i]);
+    //   if (pokemon == this.state.myPokemon[i]) {
+    //     newList.splice(i, 1);
+    //     break;
+    //   }
+    // }
+    //
+    // console.log(newList);
+    // this.setState({
+    //   myPokemon: newList
+    // })
   }
 
   // componentDidMount() {
@@ -140,10 +154,10 @@ function fillArrayWithPokemon(array) {
 function initMyPokemon() {
   if (localStorage.getItem('myPokemon') == null) {
     console.log('Fetching my pokemon...');
-    localStorage.setItem('myPokemon', JSON.stringify(require('./data/myPokemon.json')));
+    localStorage.setItem('myPokemon', []);
   }
 
-  return JSON.parse(localStorage.getItem('myPokemon'));
+  return [];
 }
 
 function initPokemonList() {

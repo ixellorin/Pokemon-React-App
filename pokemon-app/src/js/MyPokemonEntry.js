@@ -14,14 +14,24 @@ var removePokemonButton = classNames({
   'button': true
 });
 
-function MyPokemonEntry(props) {
+var pokemon = null;
+
+class MyPokemonEntry extends React.Component {
+
+  constructor(props) {
+    super(props);
+    pokemon = this.props.pokemon;
+  }
+
+  render() {
   return (
     <div className="my-pokemon-entry">
-        <img className="my-pokemon-entry-image" src={myPokemonImages[props.id]} />
-      {props.name}
-      <button onClick={() => props.removePokemon(props.index)} className="remove-entry-button">&#10006;</button>
+        <img className="my-pokemon-entry-image" src={myPokemonImages[this.props.pokemon.id]} />
+      {this.props.pokemon.name}
+      <button onClick={() => this.props.removePokemon(pokemon)} className="remove-entry-button">&#10006;</button>
     </div>
   );
+}
 }
 
 function importAll(r) {
