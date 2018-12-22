@@ -16,6 +16,7 @@ class App extends Component {
     let myPokemon = initMyPokemon();
     const filled = Array(6).fill(null);
     this.addPokemon = this.addPokemon.bind(this);
+    this.removePokemon = this.removePokemon.bind(this);
     fillArrayWithPokemon(filled);
 
     this.state = {
@@ -69,25 +70,22 @@ class App extends Component {
   }
 
   removePokemon(pokemon) {
-    if (pokemon) {
-      console.log("yes");
-    } else {
-      console.log("no");
+
+    var newList = this.state.myPokemon.slice();
+    console.log(pokemon);
+    for (var i = 0; i < this.state.myPokemon.length; i++) {
+      if (pokemon == this.state.myPokemon[i]) {
+        console.log(this.state.myPokemon[i]);
+        newList.splice(i, 1);
+        break;
+      }
     }
-    // var newList = this.state.myPokemon.slice();
-    // for (var i = 0; i < this.state.myPokemon.length; i++) {
-    //   console.log(pokemon);
-    //   console.log(this.state.myPokemon[i]);
-    //   if (pokemon == this.state.myPokemon[i]) {
-    //     newList.splice(i, 1);
-    //     break;
-    //   }
-    // }
-    //
-    // console.log(newList);
-    // this.setState({
-    //   myPokemon: newList
-    // })
+
+    console.log('pokemon removed');
+    console.log(newList);
+    this.setState({
+      myPokemon: newList
+    })
   }
 
   // componentDidMount() {
@@ -113,7 +111,7 @@ class App extends Component {
           <ActiveBoard pokemon={this.state.pokemon} ref={ (activePokemonContainer) => this.activePokemonContainer = activePokemonContainer}/>
         </div>
         <div id="my-pokemon-container" className="my-pokemon-container"  ref={ (myPokemonContainer) => this.myPokemonContainer = myPokemonContainer}>
-          <MyPokemon toggleRemovePokemon={() => this.toggleRemovePokemon()} showAddPokemonDialog={() => this.showAddPokemonDialog()} removePokemon={() => this.removePokemon()} myPokemon={this.state.myPokemon}/>
+          <MyPokemon toggleRemovePokemon={() => this.toggleRemovePokemon()} showAddPokemonDialog={() => this.showAddPokemonDialog()} removePokemon={this.removePokemon} myPokemon={this.state.myPokemon}/>
           <AddPokemon addPokemon={this.addPokemon} listOfPokemon={this.state.listOfPokemon}/>
         </div>
       </div>

@@ -20,16 +20,15 @@ class MyPokemonEntry extends React.Component {
 
   constructor(props) {
     super(props);
-    pokemon = this.props.pokemon;
   }
 
   render() {
-  return (
-    <div className="my-pokemon-entry">
-        <img className="my-pokemon-entry-image" src={myPokemonImages[this.props.pokemon.id]} />
-      {this.props.pokemon.name}
-      <button onClick={() => this.props.removePokemon(pokemon)} className="remove-entry-button">&#10006;</button>
-    </div>
+    return (
+      <div className="my-pokemon-entry">
+          <img className="my-pokemon-entry-image" src={myPokemonImages[this.props.pokemon.id]} />
+          {this.props.pokemon.name}
+          <button onClick={() => this.props.removePokemon(this.props.pokemon)} className="remove-entry-button">&#10006;</button>
+      </div>
   );
 }
 }
