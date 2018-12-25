@@ -10,18 +10,16 @@ import Pokemon from './js/Pokemon';
 class App extends Component {
 
   constructor(props) {
-
     super(props);
     let listOfPokemon = initPokemonList();
     let myPokemon = initMyPokemon();
-    const filled = Array(6).fill(null);
+    let activePokemon = initActivePokemon();
     this.addPokemon = this.addPokemon.bind(this);
     this.removePokemon = this.removePokemon.bind(this);
     this.addActivePokemon = this.addActivePokemon.bind(this);
-    fillArrayWithPokemon(filled);
 
     this.state = {
-      pokemon: filled,
+      activePokemon: activePokemon,
       myPokemon: myPokemon,
       listOfPokemon: listOfPokemon.listOfPokemon,
       activePokemon: [],
@@ -34,11 +32,10 @@ class App extends Component {
     // this.updateDimensions = this.updateDimensions.bind(this);
   }
 
-  showAddPokemonDialog() {
+  toggleAddPokemonDialog() {
     console.log("Showing add pokemon dialog");
     var addPokemonDialog = document.getElementById("add-pokemon-dialog");
     this.setState({
-      pokemon: this.state.pokemon,
       showAddPokemonDialog: !this.state.showAddPokemonDialog,
     }, () => {
       addPokemonDialog.style.display = this.state.showAddPokemonDialog ? "block" : "none";
@@ -51,6 +48,8 @@ class App extends Component {
     newList.push(new Pokemon(name, id));
     this.setState({
       myPokemon: newList
+    }, () => {
+      localStorage.setItem('myPokemon', JSON.stringify(this.state.myPokemon));
     });
   }
 
@@ -73,9 +72,22 @@ class App extends Component {
 
   }
 
+
+  isActiveFull() {
+
+    for (var i = 0; i < this.state.activePokemon.length; i++) {
+      if (this.state.myPokemon[i] == null) {
+        return false;
+      }
+    }
+
+    return true;
+
+  }
+
   addActivePokemon(pokemon) {
 
-    if (this.state.activePokemon.length == 6) {
+    if (this.isActiveFull()) {
       return;
     } else {
       var newActivePokemon = this.state.activePokemon.slice();
@@ -91,9 +103,9 @@ class App extends Component {
   removeActivePokemon(pokemon) {
     var newActivePokemon = this.state.activePokemon.slice();
 
-    for (var i = 0; i < this.state.newActivePokemon.length; i++) {
+    for (var i = 0; i < this.state.activePokemon.length; i++) {
       if (pokemon == this.state.myPokemon[i]) {
-        newActivePokemon.splice(i, 1);
+        newActivePokemon[i] = null;
         break;
       }
     }
@@ -121,8 +133,13 @@ class App extends Component {
     console.log(newList);
     this.setState({
       myPokemon: newList
-    })
+    }, () => {
+      localStorage.setItem('myPokemon', JSON.stringify(this.state.myPokemon));
+    });
   }
+
+
+  
 
   // componentDidMount() {
   //   // Additionally I could have just used an arrow function for the binding `this` to the component...
@@ -144,10 +161,10 @@ class App extends Component {
     return (
       <div className="board">
         <div id="active-pokemon-container" className="active-pokemon-container">
-          <ActiveBoard pokemon={this.state.pokemon} ref={ (activePokemonContainer) => this.activePokemonContainer = activePokemonContainer}/>
+          <ActiveBoard pokemon={this.state.activePokemon} ref={ (activePokemonContainer) => this.activePokemonContainer = activePokemonContainer}/>
         </div>
         <div id="my-pokemon-container" className="my-pokemon-container"  ref={ (myPokemonContainer) => this.myPokemonContainer = myPokemonContainer}>
-          <MyPokemon toggleRemovePokemon={() => this.toggleRemovePokemon()} showAddPokemonDialog={() => this.showAddPokemonDialog()} removePokemon={this.removePokemon} myPokemon={this.state.myPokemon}/>
+          <MyPokemon toggleRemovePokemon={() => this.toggleRemovePokemon()} toggleAddPokemonDialog={() => this.toggleAddPokemonDialog()} removePokemon={this.removePokemon} myPokemon={this.state.myPokemon}/>
           <AddPokemon addPokemon={this.addPokemon} listOfPokemon={this.state.listOfPokemon}/>
         </div>
       </div>
@@ -157,52 +174,62 @@ class App extends Component {
 
 }
 
-function importAll(r) {
-  return r.keys().map(r);
-}
-
-function naturalCompare(a, b) {
-    var ax = [], bx = [];
-
-    a.replace(/(\d+)|(\D+)/g, function(_, $1, $2) { ax.push([$1 || Infinity, $2 || ""]) });
-    b.replace(/(\d+)|(\D+)/g, function(_, $1, $2) { bx.push([$1 || Infinity, $2 || ""]) });
-
-    while(ax.length && bx.length) {
-        var an = ax.shift();
-        var bn = bx.shift();
-        var nn = (an[0] - bn[0]) || an[1].localeCompare(bn[1]);
-        if(nn) return nn;
-    }
-
-    return ax.length - bx.length;
-}
-
-var activePokemonImages = importAll(require.context('./images/pokemon/activeIcons', true, /.*\.png$/)).sort(naturalCompare);
-
-var myPokemonImages = importAll(require.context('./images/pokemon/myPokemonIcons', true, /.*\.png$/)).sort(naturalCompare);
-
-function fillArrayWithPokemon(array) {
-  for (var i = 0; i < array.length; i++) {
-    array[i] = activePokemonImages[Math.floor(Math.random() * 151)];
-    }
+function initPokemonList() {
+  console.log('Fetching all pokemon...');
+  var allPokemon = localStorage.getItem('listOfPokemon');
+  if (allPokemon == null) {
+    localStorage.setItem('listOfPokemon', JSON.stringify(require('./data/listOfPokemon.json')));
+    return JSON.parse(JSON.stringify(require('./data/listOfPokemon.json')));
+  } else {
+    return JSON.parse(allPokemon);
   }
+
+}
 
 function initMyPokemon() {
-  if (localStorage.getItem('myPokemon') == null) {
-    console.log('Fetching my pokemon...');
-    localStorage.setItem('myPokemon', []);
+  console.log('Fetching your pokemon...');
+  var myPokemon = localStorage.getItem('myPokemon')
+  if (myPokemon == null) {
+    console.log('No data found, initializing your pokemon...');
+    localStorage.setItem('myPokemon', JSON.stringify([]));
+    return [];
+  } else {
+    let parsed = JSON.parse(myPokemon);
+    console.log('Found your pokemon!');
+    if (parsed.length == 0) {
+      console.log('...but you don\'t have any pokemon! :(');
+    }
+    console.log(parsed);
+    return parsed;
   }
 
-  return [];
 }
 
-function initPokemonList() {
-  if (localStorage.getItem('listOfPokemon') == null) {
-    console.log('Fetching all pokemon...');
-    localStorage.setItem('listOfPokemon', JSON.stringify(require('./data/listOfPokemon.json')));
-  }
+function initActivePokemon() {
+  console.log('Fetching your active my pokemon...');
+  var activePokemon = localStorage.getItem('activePokemon');
+  if (activePokemon == null) {
+    console.log('No data found, initializing your active pokemon...');
+    localStorage.setItem('activePokemon', JSON.stringify(Array(6).fill(null)));
+    return Array(6).fill(null);
+  } else {
+    console.log('Found your active pokemon!');
+    let parsed = JSON.parse(activePokemon);
+    let empty = true;
 
-  return JSON.parse(localStorage.getItem('listOfPokemon'));
+    for (var i = 0; i < parsed.length; i++) {
+      if (parsed[i] != null) {
+        empty = false;
+        break;
+      }
+    }
+
+    if (empty) {
+      console.log('but... you don\'t have any active pokemon! :(');
+    }
+    console.log(parsed);
+    return parsed;
+  }
 }
 
 export default App;

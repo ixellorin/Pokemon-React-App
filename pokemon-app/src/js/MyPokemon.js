@@ -33,8 +33,8 @@ class MyPokemon extends React.Component {
             {buttonsList}
           </div>
           <div className="my-pokemon-buttons-container">
-            <button className={addPokemonButton} onClick={this.props.showAddPokemonDialog}>Add +</button>
-            <button className={removePokemonButton} onClick={this.props.toggleRemovePokemon}>Remove +</button>
+            <button className={addPokemonButton} onClick={this.props.toggleAddPokemonDialog}>Add &#43;</button>
+            <button className={removePokemonButton} onClick={this.props.toggleRemovePokemon}>Remove &times;</button>
           </div>
         </div>
       );

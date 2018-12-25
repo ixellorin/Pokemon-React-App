@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import '../css/styles.css';
 import classNames from 'classnames';
 
-var removeEntryButton = classNames({
+var addPokemonButton = classNames({
+  'my-pokemon-buttons': true,
+  'add-pokemon': true,
+  'button': true
+});
+
+var removePokemonButton = classNames({
   'remove-entry-button': true,
   'button': true
 });
@@ -20,7 +26,7 @@ class MyPokemonEntry extends React.Component {
       <div className="my-pokemon-entry">
           <img className="my-pokemon-entry-image" src={myPokemonImages[this.props.pokemon.id]} />
           {this.props.pokemon.name}
-          <button onClick={() => this.props.removePokemon(this.props.pokemon)} className={removeEntryButton}>&#10006;</button>
+          <button onClick={() => this.props.removePokemon(this.props.pokemon)} className="remove-entry-button">&#10006;</button>
       </div>
   );
 }

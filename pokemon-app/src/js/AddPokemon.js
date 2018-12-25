@@ -18,7 +18,7 @@ class AddPokemon extends React.Component {
   render() {
 
     var pokemon = this.props.listOfPokemon;
-    
+
     var onClick = this.props.addPokemon;
     var buttonsList = pokemon.map(function(pokemon) {
       return <li className="add-pokemon-list-item"><button onClick={() => onClick(pokemon.name, pokemon.id)} className={addPokemonButton}>{pokemon.name}</button></li>

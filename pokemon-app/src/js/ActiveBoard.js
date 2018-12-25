@@ -6,13 +6,22 @@ class ActiveBoard extends React.Component {
   constructor(props) {
   super(props);
 
+  var activePokemon = this.props.pokemon;
+  var grid = Array(6).fill(null);
+
+  for (var i = 0; i < activePokemon.length; i++) {
+    if (activePokemon[i] != null) {
+      grid[i] = activePokemonImages[activePokemon[i].id - 1];
+    }
+  }
+
   this.state = {
-    grid1: null,
-    grid2: null,
-    grid3: null,
-    grid4: null,
-    grid5: null,
-    grid6: null,
+    grid1: grid[0],
+    grid2: grid[1],
+    grid3: grid[2],
+    grid4: grid[3],
+    grid5: grid[4],
+    grid6: grid[5],
   }
 }
 
@@ -48,5 +57,35 @@ class ActiveBoard extends React.Component {
     );
   }
 }
+
+
+function importAll(r) {
+  return r.keys().map(r);
+}
+
+function naturalCompare(a, b) {
+    var ax = [], bx = [];
+
+    a.replace(/(\d+)|(\D+)/g, function(_, $1, $2) { ax.push([$1 || Infinity, $2 || ""]) });
+    b.replace(/(\d+)|(\D+)/g, function(_, $1, $2) { bx.push([$1 || Infinity, $2 || ""]) });
+
+    while(ax.length && bx.length) {
+        var an = ax.shift();
+        var bn = bx.shift();
+        var nn = (an[0] - bn[0]) || an[1].localeCompare(bn[1]);
+        if(nn) return nn;
+    }
+
+    return ax.length - bx.length;
+}
+
+var activePokemonImages = importAll(require.context('../images/pokemon/activeIcons', true, /.*\.png$/)).sort(naturalCompare);
+
+
+function fillArrayWithPokemon(array) {
+  for (var i = 0; i < array.length; i++) {
+    array[i] = activePokemonImages[Math.floor(Math.random() * 151)];
+    }
+  }
 
 export default ActiveBoard;
