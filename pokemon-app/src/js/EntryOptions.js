@@ -17,9 +17,12 @@ class EntryOptions extends React.Component {
   }
   render() {
 
+    var source = (this.props.pokemon == null) ? null : myPokemonImages[this.props.pokemon.id]
+
     return (
       <div className="entry-options-dialog" id="entry-options-dialog">
-        <h1>Options</h1>
+        <img className="entry-options-image" src={source} />
+        <h4 className="entry-options-header">Options</h4>
         <ul className="entry-options-list">
         <li>Set Active</li>
         <li>Remove</li>
@@ -28,5 +31,14 @@ class EntryOptions extends React.Component {
     );
   }
 }
+
+
+function importAll(r) {
+  let images = {};
+  r.keys().map((item, index) => { images[item.replace('./', '').replace('.png', '')] = r(item); });
+  return images;
+}
+
+var myPokemonImages = importAll(require.context('../images/pokemon/myPokemonIcons', true, /.*\.png$/));
 
 export default EntryOptions;

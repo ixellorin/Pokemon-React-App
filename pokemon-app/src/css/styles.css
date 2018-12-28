@@ -307,20 +307,22 @@ body {
   top: 0px;
   padding-left: 0;
   max-height: 44vw;
-  width: 97%;
+  width: 50%;
   overflow-y: scroll;
 }
 
+.entry-options-header {
+  display: inline;
+}
+
+.entry-options-image {
+  height: 30px;
+}
+
 .entry-options-button {
-  outline: none;
   position: absolute;
-  display: none;
-  right: 0px;
-  padding-left: 8px;
-  padding-top: 1px;
-  height: 35px;
-  width: 35px;
-  border-radius: 50%;
-  border: 5px solid #000000;
-  background-color: #CCCCCC;
+  right: 50px;
+  top: 5px;
+  height: 75%;
+  cursor: pointer;
 }

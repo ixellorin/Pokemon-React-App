@@ -22,8 +22,9 @@ class MyPokemon extends React.Component {
   render() {
     var myPokemon = this.props.myPokemon;
     var onClick = this.props.removePokemon;
+    var toggleEntryOptions = this.props.toggleEntryOptions;
     var buttonsList = myPokemon.map(function(pokemon) {
-      return <MyPokemonEntry pokemon={pokemon} removePokemon={onClick}/>
+      return <MyPokemonEntry toggleEntryOptions={toggleEntryOptions} pokemon={pokemon} removePokemon={onClick}/>
     });
 
     return (

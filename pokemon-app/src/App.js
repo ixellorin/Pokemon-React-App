@@ -4,6 +4,7 @@ import './App.css';
 import ActiveBoard from './js/ActiveBoard';
 import MyPokemon from './js/MyPokemon';
 import NavBar from './js/NavBar';
+import EntryOptions from './js/EntryOptions';
 import AddPokemon from './js/AddPokemon';
 import Pokemon from './js/Pokemon';
 
@@ -17,6 +18,7 @@ class App extends Component {
     this.addPokemon = this.addPokemon.bind(this);
     this.removePokemon = this.removePokemon.bind(this);
     this.addActivePokemon = this.addActivePokemon.bind(this);
+    this.toggleEntryOptions = this.toggleEntryOptions.bind(this);
 
     this.state = {
       activePokemon: activePokemon,
@@ -24,7 +26,9 @@ class App extends Component {
       listOfPokemon: listOfPokemon.listOfPokemon,
       activePokemon: [],
       showAddPokemonDialog: false,
+      currentPokemonForOptions: null,
       removePokemonEnabled: false,
+      showEntryOptionsDialog: false,
       // activePokemonHeight: null,
       // myPokemonHeight: null,
     };
@@ -104,7 +108,7 @@ class App extends Component {
     var newActivePokemon = this.state.activePokemon.slice();
 
     for (var i = 0; i < this.state.activePokemon.length; i++) {
-      if (pokemon == this.state.myPokemon[i]) {
+      if (pokemon === this.state.myPokemon[i]) {
         newActivePokemon[i] = null;
         break;
       }
@@ -122,7 +126,7 @@ class App extends Component {
     var newList = this.state.myPokemon.slice();
     console.log(pokemon);
     for (var i = 0; i < this.state.myPokemon.length; i++) {
-      if (pokemon == this.state.myPokemon[i]) {
+      if (pokemon === this.state.myPokemon[i]) {
         console.log(this.state.myPokemon[i]);
         newList.splice(i, 1);
         break;
@@ -138,8 +142,32 @@ class App extends Component {
     });
   }
 
+  toggleEntryOptions(pokemon, e) {
+    var anchor= e.target.getBoundingClientRect();
+    console.log(anchor);
+    if (pokemon === this.state.currentPokemonForOptions || this.state.currentPokemonForOptions === null) {
+      var entryOptionsDialog = document.getElementById("entry-options-dialog");
+      this.setState({
+        showEntryOptionsDialog: !this.state.showEntryOptionsDialog,
+        currentPokemonForOptions: pokemon,
+      }, () => {
+        if (this.state.showEntryOptionsDialog) {
+            console.log("Opening entry options...");
+            entryOptionsDialog.style.display = "block";
+            entryOptionsDialog.style.top = (anchor.y - 20).toString() + "px";
+        } else {
+            console.log("Closing entry options...");
+            entryOptionsDialog.style.display = "none";
+            this.setState({
+              currentPokemonForOptions: null,
+            }, () => {
+              return true;
+            });
+        }
+      });
+    }
+  }
 
-  
 
   // componentDidMount() {
   //   // Additionally I could have just used an arrow function for the binding `this` to the component...
@@ -164,8 +192,9 @@ class App extends Component {
           <ActiveBoard pokemon={this.state.activePokemon} ref={ (activePokemonContainer) => this.activePokemonContainer = activePokemonContainer}/>
         </div>
         <div id="my-pokemon-container" className="my-pokemon-container"  ref={ (myPokemonContainer) => this.myPokemonContainer = myPokemonContainer}>
-          <MyPokemon toggleRemovePokemon={() => this.toggleRemovePokemon()} toggleAddPokemonDialog={() => this.toggleAddPokemonDialog()} removePokemon={this.removePokemon} myPokemon={this.state.myPokemon}/>
+          <MyPokemon toggleRemovePokemon={() => this.toggleRemovePokemon()} toggleAddPokemonDialog={() => this.toggleAddPokemonDialog()} removePokemon={this.removePokemon} toggleEntryOptions={this.toggleEntryOptions} myPokemon={this.state.myPokemon}/>
           <AddPokemon addPokemon={this.addPokemon} listOfPokemon={this.state.listOfPokemon}/>
+          <EntryOptions pokemon={this.state.currentPokemonForOptions}/>
         </div>
       </div>
     );
