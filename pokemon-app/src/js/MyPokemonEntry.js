@@ -17,7 +17,6 @@ class MyPokemonEntry extends React.Component {
           <img className="my-pokemon-entry-image" src={myPokemonImages[this.props.pokemon.id]} />
           {this.props.pokemon.name}
           <img className="entry-options-button" onClick={(e) => this.props.toggleEntryOptions(this.props.pokemon, e)} src={optionsButton}/>
-          <button onClick={() => this.props.removePokemon(this.props.pokemon)} className="remove-entry-button">&#10006;</button>
       </div>
   );
 }

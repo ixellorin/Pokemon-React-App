@@ -154,7 +154,7 @@ class App extends Component {
         if (this.state.showEntryOptionsDialog) {
             console.log("Opening entry options...");
             entryOptionsDialog.style.display = "block";
-            entryOptionsDialog.style.top = (anchor.y - 20).toString() + "px";
+            entryOptionsDialog.style.top = (anchor.y - 10).toString() + "px";
         } else {
             console.log("Closing entry options...");
             entryOptionsDialog.style.display = "none";

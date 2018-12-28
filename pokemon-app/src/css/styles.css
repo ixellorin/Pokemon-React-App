@@ -305,9 +305,10 @@ body {
   z-index: 2;
   position: absolute;
   top: 0px;
-  padding-left: 0;
+  left: 25px;
+  padding-left: 10px;
   max-height: 44vw;
-  width: 50%;
+  width: 75%;
   overflow-y: scroll;
 }
 
@@ -321,7 +322,7 @@ body {
 
 .entry-options-button {
   position: absolute;
-  right: 50px;
+  right: 0px;
   top: 5px;
   height: 75%;
   cursor: pointer;
