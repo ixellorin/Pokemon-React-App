@@ -10,13 +10,6 @@ var addPokemonButton = classNames({
   'button': true
 });
 
-var removePokemonButton = classNames({
-  'my-pokemon-buttons': true,
-  'remove-pokemon-button': true,
-  'button': true
-});
-
-
 class MyPokemon extends React.Component {
 
   render() {
@@ -35,7 +28,6 @@ class MyPokemon extends React.Component {
           </div>
           <div className="my-pokemon-buttons-container">
             <button className={addPokemonButton} onClick={this.props.toggleAddPokemonDialog}>Add &#43;</button>
-            <button className={removePokemonButton} onClick={this.props.toggleRemovePokemon}>Remove &times;</button>
           </div>
         </div>
       );

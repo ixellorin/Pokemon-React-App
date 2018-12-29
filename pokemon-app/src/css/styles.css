@@ -13,6 +13,7 @@ html {
   margin: 0;
   height: 100%;
   min-height: 20vw;
+  cursor: default;
 }
 
 body {
@@ -242,7 +243,7 @@ body {
 
 .add-pokemon.button {
   background-color: #4CAF50;
-  width: 50%;
+  width: 100%;
 }
 
 .remove-pokemon-button {
@@ -316,6 +317,10 @@ body {
   display: inline;
 }
 
+.entry-option {
+  cursor: pointer;
+}
+
 .entry-options-image {
   height: 30px;
 }
@@ -326,4 +331,16 @@ body {
   top: 5px;
   height: 75%;
   cursor: pointer;
+}
+
+.entry-options-active-selector {
+  padding-left: 5px;
+  height: 15px;
+  visibility: hidden;
+}
+
+.entry-options-remove-selector {
+  padding-left: 5px;
+  height: 15px;
+  visibility: hidden;
 }

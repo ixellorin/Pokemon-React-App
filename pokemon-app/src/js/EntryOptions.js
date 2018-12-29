@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import '../css/styles.css';
 import classNames from 'classnames';
-
-var addPokemonButton = classNames({
-  'add-pokemon-list-button': true,
-  'button': true
-});
-
-// var images = require.context('../images/pokemon', true, /.*\.png$/);
-
+var optionsButton = require('../images/misc/expand_button.png');
 
 class EntryOptions extends React.Component {
 
   constructor(props) {
       super(props);
+      this.mouseIn = this.mouseIn.bind(this);
+      this.mouseOut = this.mouseOut.bind(this);
   }
   render() {
 
@@ -22,14 +17,42 @@ class EntryOptions extends React.Component {
     return (
       <div className="entry-options-dialog" id="entry-options-dialog">
         <img className="entry-options-image" src={source} />
-        <h4 className="entry-options-header">Options</h4>
+        Options
         <ul className="entry-options-list">
-        <li>Set Active</li>
-        <li>Remove</li>
+        <li className="entry-option" id="set-active-option" onMouseEnter={this.mouseIn} onMouseLeave={this.mouseOut}>Set Active
+        <img id="entry-options-active-selector" className="entry-options-active-selector" src={optionsButton}/></li>
+        <li className="entry-option" id="remove-option" onMouseEnter={this.mouseIn} onMouseLeave={this.mouseOut} onClick={() => this.props.removePokemon(this.props.pokemon)}>Remove
+        <img id="entry-options-remove-selector" className="entry-options-remove-selector" src={optionsButton}/></li>
         </ul>
       </div>
     );
   }
+
+  mouseIn(e) {
+    e.preventDefault();
+
+    if (e.target.id == "set-active-option") {
+      console.log("hovered over set active");
+      document.getElementById("entry-options-active-selector").style.visibility = "visible";
+    } else if (e.target.id == "remove-option") {
+      console.log("hovered over remove option");
+      document.getElementById("entry-options-remove-selector").style.visibility = "visible";
+    }
+  }
+
+  mouseOut(e) {
+    e.preventDefault();
+
+
+    if (e.target.id == "set-active-option") {
+      console.log("left set active");
+      document.getElementById("entry-options-active-selector").style.visibility = "hidden";
+    } else if (e.target.id == "remove-option") {
+      console.log("left remove option");
+      document.getElementById("entry-options-remove-selector").style.visibility = "hidden";
+    }
+  }
+
 }
 
 
