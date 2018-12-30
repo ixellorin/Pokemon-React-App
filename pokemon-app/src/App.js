@@ -18,17 +18,19 @@ class App extends Component {
     let listOfPokemon = initPokemonList();
     let myPokemon = initMyPokemon();
     let activePokemon = initActivePokemon();
+
     this.addPokemon = this.addPokemon.bind(this);
     this.removePokemon = this.removePokemon.bind(this);
-    this.addActivePokemon = this.addActivePokemon.bind(this);
+
     this.toggleEntryOptions = this.toggleEntryOptions.bind(this);
-    this.finishRemove = this.finishRemove.bind(this);
+    this.addActivePokemon = this.addActivePokemon.bind(this);
+    this.removeActivePokemon = this.removeActivePokemon.bind(this);
+    this.finishOptions = this.finishOptions.bind(this);
 
     this.state = {
       activePokemon: activePokemon,
       myPokemon: myPokemon,
       listOfPokemon: listOfPokemon.listOfPokemon,
-      activePokemon: [],
       showAddPokemonDialog: false,
       currentPokemonForOptions: null,
       showEntryOptionsDialog: false,
@@ -64,7 +66,7 @@ class App extends Component {
   isActiveFull() {
 
     for (var i = 0; i < this.state.activePokemon.length; i++) {
-      if (this.state.myPokemon[i] == null) {
+      if (this.state.activePokemon[i] == null) {
         return false;
       }
     }
@@ -73,46 +75,82 @@ class App extends Component {
 
   }
 
-  addActivePokemon(pokemon) {
+  pokemonAlreadyActive(pokemon) {
+    for (var i = 0; i < this.state.activePokemon.length; i++) {
+      if (pokemon === this.state.activePokemon[i]) {
+        return true;
+      }
+    }
+    return false;
+  }
 
+  addActivePokemon(pokemon) {
+    console.log("Attempting to set " + pokemon.name + " as active...")
     if (this.isActiveFull()) {
+      console.log("You already have 6 pokemon active...");
       return;
+    } else if (this.pokemonAlreadyActive(pokemon)) {
+      console.log(pokemon.name + " is already active");
     } else {
       var newActivePokemon = this.state.activePokemon.slice();
+      newActivePokemon = this.insertAtFirstNull(pokemon, newActivePokemon);
       this.setState({
         activePokemon: newActivePokemon,
       }, () => {
-        pokemon.setActive();
+        this.finishOptions();
+        console.log("added " + pokemon.name + " to active roster...")
+        pokemon.isActive = true;
+        localStorage.setItem('activePokemon', JSON.stringify(this.state.activePokemon));
       });
     }
 
   }
 
-  removeActivePokemon(pokemon) {
-    var newActivePokemon = this.state.activePokemon.slice();
+  insertAtFirstNull(obj, array) {
+    for (var i = 0; i < array.length; i++) {
+      if (array[i] == null) {
+        array[i] = obj;
+        return array;
+      }
+    }
+    return array;
+  }
 
+
+  removeActivePokemon(pokemon) {
+    console.log("Attempting to remove " + pokemon.name + " from the active roster...");
+
+    var newActivePokemon = this.state.activePokemon.slice();
+    var removeSuccessful = false;
     for (var i = 0; i < this.state.activePokemon.length; i++) {
-      if (pokemon === this.state.myPokemon[i]) {
+      if (pokemon === this.state.activePokemon[i]) {
         newActivePokemon[i] = null;
+        removeSuccessful = true;
         break;
       }
     }
 
+    console.log(newActivePokemon);
+
     this.setState({
       activePokemon: newActivePokemon,
     }, () => {
-      pokemon.setInactive();
+      pokemon.isActive = false;
+      localStorage.setItem('activePokemon', JSON.stringify(this.state.activePokemon));
+      console.log(removeSuccessful ? "Removed " + pokemon.name + " from the active roster..." : pokemon.name + " is already inactive");
     });
   }
 
   removePokemon(pokemon) {
-
+    if (pokemon.isActive) {
+      this.removeActivePokemon(pokemon);
+    }
     var newList = this.state.myPokemon.slice();
-    console.log(pokemon);
     for (var i = 0; i < this.state.myPokemon.length; i++) {
       if (pokemon === this.state.myPokemon[i]) {
         console.log(this.state.myPokemon[i]);
         newList.splice(i, 1);
+        console.log(pokemon.isActive);
         break;
       }
     }
@@ -122,7 +160,7 @@ class App extends Component {
     this.setState({
       myPokemon: newList
     }, () => {
-      this.finishRemove();
+      this.finishOptions();
       localStorage.setItem('myPokemon', JSON.stringify(this.state.myPokemon));
     });
 
@@ -158,11 +196,15 @@ class App extends Component {
     }
   }
 
-  finishRemove() {
+  finishOptions() {
     this.setState({
       showEntryOptionsDialog: !this.state.showEntryOptionsDialog,
       currentPokemonForOptions: null,
     }, () => {
+      var optionsButtons = document.getElementsByClassName("entry-options-button");
+      for (let button of optionsButtons) {
+        button.src = optionsButton;
+      }
       var entryOptionsDialog = document.getElementById("entry-options-dialog");
       entryOptionsDialog.style.display = "none";
       return true;
@@ -195,7 +237,7 @@ class App extends Component {
         <div id="my-pokemon-container" className="my-pokemon-container"  ref={ (myPokemonContainer) => this.myPokemonContainer = myPokemonContainer}>
           <MyPokemon toggleAddPokemonDialog={() => this.toggleAddPokemonDialog()} removePokemon={this.removePokemon} toggleEntryOptions={this.toggleEntryOptions} myPokemon={this.state.myPokemon}/>
           <AddPokemon addPokemon={this.addPokemon} listOfPokemon={this.state.listOfPokemon}/>
-          <EntryOptions removePokemon={this.removePokemon} pokemon={this.state.currentPokemonForOptions}/>
+          <EntryOptions removePokemon={this.removePokemon} setActive={this.addActivePokemon} removeActivePokemon={this.removeActivePokemon} pokemon={this.state.currentPokemonForOptions}/>
         </div>
       </div>
     );

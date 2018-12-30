@@ -6,14 +6,6 @@ class Pokemon {
     this.isActive = false;
   }
 
-  setActive() {
-    this.isActive = true;
-  }
-
-  setInactive() {
-    this.isActive = false;
-  }
-
 }
 
 export default Pokemon;

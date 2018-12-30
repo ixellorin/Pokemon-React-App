@@ -31,31 +31,41 @@ class ActiveBoard extends React.Component {
       <div className="grid" id="grid">
         <div className="grid-row">
           <div className="grid-column top left">
-              <img className="grid-image" src={this.state.grid1} />
+              {this.getImage(0)}
           </div>
           <div className="grid-column top middle">
-              <img className="grid-image" src={this.state.grid2} />
+              {this.getImage(1)}
           </div>
           <div className="grid-column top right">
-              <img className="grid-image" src={this.state.grid3} />
+              {this.getImage(2)}
           </div>
         </div>
 
         <div className="grid-row">
           <div className="grid-column bottom left">
-              <img className="grid-image" src={this.state.grid4} />
+              {this.getImage(3)}
           </div>
           <div className="grid-column bottom middle">
-              <img className="grid-image" src={this.state.grid5} />
+              {this.getImage(4)}
           </div>
           <div className="grid-column bottom right">
-              <img className="grid-image" src={this.state.grid6} />
+              {this.getImage(5)}
           </div>
         </div>
 
       </div>
     );
   }
+
+  getImage(i) {
+    console.log(this.props.pokemon);
+    if (this.props.pokemon[i] == null) {
+      return <img className="grid-image" src={null} />;
+    } else {
+      return <img className="grid-image" src={activePokemonImages[this.props.pokemon[i].id - 1]} />;
+    }
+  }
+
 }
 
 

@@ -19,10 +19,12 @@ class EntryOptions extends React.Component {
         <img className="entry-options-image" src={source} />
         Options
         <ul className="entry-options-list">
-        <li className="entry-option" id="set-active-option" onMouseEnter={this.mouseIn} onMouseLeave={this.mouseOut}>Set Active
+        <li className="entry-option" id="set-active-option" onMouseEnter={this.mouseIn} onMouseLeave={this.mouseOut} onClick={() => this.props.setActive(this.props.pokemon)}>Set Active
         <img id="entry-options-active-selector" className="entry-options-active-selector" src={optionsButton}/></li>
-        <li className="entry-option" id="remove-option" onMouseEnter={this.mouseIn} onMouseLeave={this.mouseOut} onClick={() => this.props.removePokemon(this.props.pokemon)}>Remove
+        <li className="entry-option" id="remove-option" onMouseEnter={this.mouseIn} onMouseLeave={this.mouseOut} onClick={() => this.props.removeActivePokemon(this.props.pokemon)}>Set Inactive
         <img id="entry-options-remove-selector" className="entry-options-remove-selector" src={optionsButton}/></li>
+        <li className="entry-option" id="set-inactive-option" onMouseEnter={this.mouseIn} onMouseLeave={this.mouseOut} onClick={() => this.props.removePokemon(this.props.pokemon)}>Remove
+        <img id="entry-options-inactive-selector" className="entry-options-inactive-selector" src={optionsButton}/></li>
         </ul>
       </div>
     );
@@ -32,10 +34,10 @@ class EntryOptions extends React.Component {
     e.preventDefault();
 
     if (e.target.id == "set-active-option") {
-      console.log("hovered over set active");
       document.getElementById("entry-options-active-selector").style.visibility = "visible";
+    } else if (e.target.id == "set-inactive-option") {
+      document.getElementById("entry-options-inactive-selector").style.visibility = "visible";
     } else if (e.target.id == "remove-option") {
-      console.log("hovered over remove option");
       document.getElementById("entry-options-remove-selector").style.visibility = "visible";
     }
   }
@@ -45,10 +47,10 @@ class EntryOptions extends React.Component {
 
 
     if (e.target.id == "set-active-option") {
-      console.log("left set active");
       document.getElementById("entry-options-active-selector").style.visibility = "hidden";
+    } else if (e.target.id == "set-inactive-option") {
+      document.getElementById("entry-options-inactive-selector").style.visibility = "hidden";
     } else if (e.target.id == "remove-option") {
-      console.log("left remove option");
       document.getElementById("entry-options-remove-selector").style.visibility = "hidden";
     }
   }

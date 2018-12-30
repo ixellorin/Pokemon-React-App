@@ -344,3 +344,9 @@ body {
   height: 15px;
   visibility: hidden;
 }
+
+.entry-options-inactive-selector {
+  padding-left: 5px;
+  height: 15px;
+  visibility: hidden;
+}
