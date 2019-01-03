@@ -2,7 +2,7 @@
   "name": "pokemon-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ixellorin.github.io/my-pokemon-app",
+  "homepage": "https://ixellorin.github.io/Pokemon-React-App",
   "dependencies": {
     "classnames": "^2.2.6",
     "gh-pages": "^2.0.1",
