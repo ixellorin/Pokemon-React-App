@@ -136,7 +136,7 @@ class App extends Component {
       activePokemon: newActivePokemon,
     }, () => {
       pokemon.isActive = false;
-      localStorage.setItem('activePokemon', JSON.stringify(this.state.activePokemon));
+      localStorage.setItem('myPokemon', JSON.stringify(this.state.myPokemon));
       console.log(removeSuccessful ? "Removed " + pokemon.name + " from the active roster..." : pokemon.name + " is already inactive");
     });
   }
