@@ -1,13 +1,13 @@
 {
   "main.css": "/Pokemon-React-App/static/css/main.db3c2415.chunk.css",
-  "main.js": "/Pokemon-React-App/static/js/main.e642aacc.chunk.js",
-  "main.js.map": "/Pokemon-React-App/static/js/main.e642aacc.chunk.js.map",
+  "main.js": "/Pokemon-React-App/static/js/main.d594d4fa.chunk.js",
+  "main.js.map": "/Pokemon-React-App/static/js/main.d594d4fa.chunk.js.map",
   "static/js/1.d99b71f2.chunk.js": "/Pokemon-React-App/static/js/1.d99b71f2.chunk.js",
   "static/js/1.d99b71f2.chunk.js.map": "/Pokemon-React-App/static/js/1.d99b71f2.chunk.js.map",
   "runtime~main.js": "/Pokemon-React-App/static/js/runtime~main.14e701ad.js",
   "runtime~main.js.map": "/Pokemon-React-App/static/js/runtime~main.14e701ad.js.map",
   "static/media/36_CLEFABLE.png": "/Pokemon-React-App/static/media/36_CLEFABLE.55e8799e.png",
-  "static/media/styles.css": "/Pokemon-React-App/static/media/cursor.a8d3588f.png",
+  "static/media/styles.css": "/Pokemon-React-App/static/media/pokemon_fire_red.65780863.ttf",
   "static/media/expand_button.png": "/Pokemon-React-App/static/media/expand_button.0d618221.png",
   "static/media/logo.svg": "/Pokemon-React-App/static/media/logo.5d5d9eef.svg",
   "static/media/100_VOLTORB.png": "/Pokemon-React-App/static/media/100_VOLTORB.14c169b7.png",
@@ -164,6 +164,6 @@
   "static/media/expand_button_active.png": "/Pokemon-React-App/static/media/expand_button_active.ef68b8b2.png",
   "static/css/main.db3c2415.chunk.css.map": "/Pokemon-React-App/static/css/main.db3c2415.chunk.css.map",
   "index.html": "/Pokemon-React-App/index.html",
-  "precache-manifest.18d170de16aad8f317910165cc7d38ba.js": "/Pokemon-React-App/precache-manifest.18d170de16aad8f317910165cc7d38ba.js",
+  "precache-manifest.d5999c3af083ca085d7b548957efe485.js": "/Pokemon-React-App/precache-manifest.d5999c3af083ca085d7b548957efe485.js",
   "service-worker.js": "/Pokemon-React-App/service-worker.js"
 }

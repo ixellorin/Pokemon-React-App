@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/Pokemon-React-App/static/media/2_IVYSAUR.4edcbdb5.png"
   },
   {
-    "revision": "e642aacc45c0d6582893",
+    "revision": "d594d4fa3509935f7b16",
     "url": "/Pokemon-React-App/static/css/main.db3c2415.chunk.css"
   },
   {
@@ -16,12 +16,12 @@ self.__precacheManifest = [
     "url": "/Pokemon-React-App/static/js/runtime~main.14e701ad.js"
   },
   {
-    "revision": "65780863e7302fe257df982341d6a1cb",
-    "url": "/Pokemon-React-App/static/media/pokemon_fire_red.65780863.ttf"
-  },
-  {
     "revision": "a8d3588fd41ce54b8cc5646c8ceeedeb",
     "url": "/Pokemon-React-App/static/media/cursor.a8d3588f.png"
+  },
+  {
+    "revision": "65780863e7302fe257df982341d6a1cb",
+    "url": "/Pokemon-React-App/static/media/pokemon_fire_red.65780863.ttf"
   },
   {
     "revision": "0d618221487fe8fa6889d5f650e262b0",
@@ -324,8 +324,8 @@ self.__precacheManifest = [
     "url": "/Pokemon-React-App/static/media/29_NIDORAN_F.a723c64b.png"
   },
   {
-    "revision": "e642aacc45c0d6582893",
-    "url": "/Pokemon-React-App/static/js/main.e642aacc.chunk.js"
+    "revision": "d594d4fa3509935f7b16",
+    "url": "/Pokemon-React-App/static/js/main.d594d4fa.chunk.js"
   },
   {
     "revision": "9292b819d0b1a690e5065908ca716a2b",
@@ -644,7 +644,7 @@ self.__precacheManifest = [
     "url": "/Pokemon-React-App/static/media/expand_button_active.ef68b8b2.png"
   },
   {
-    "revision": "c6f07a95a128ede65e0689f2484c711b",
+    "revision": "11efe51c071d8bf81cd4201ee02b83b7",
     "url": "/Pokemon-React-App/index.html"
   }
 ];
