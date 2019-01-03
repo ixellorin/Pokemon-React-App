@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/Pokemon-React-App/static/media/2_IVYSAUR.4edcbdb5.png"
   },
   {
-    "revision": "d594d4fa3509935f7b16",
+    "revision": "e642aacc45c0d6582893",
     "url": "/Pokemon-React-App/static/css/main.db3c2415.chunk.css"
   },
   {
@@ -324,8 +324,8 @@ self.__precacheManifest = [
     "url": "/Pokemon-React-App/static/media/29_NIDORAN_F.a723c64b.png"
   },
   {
-    "revision": "d594d4fa3509935f7b16",
-    "url": "/Pokemon-React-App/static/js/main.d594d4fa.chunk.js"
+    "revision": "e642aacc45c0d6582893",
+    "url": "/Pokemon-React-App/static/js/main.e642aacc.chunk.js"
   },
   {
     "revision": "9292b819d0b1a690e5065908ca716a2b",
@@ -644,7 +644,7 @@ self.__precacheManifest = [
     "url": "/Pokemon-React-App/static/media/expand_button_active.ef68b8b2.png"
   },
   {
-    "revision": "11efe51c071d8bf81cd4201ee02b83b7",
+    "revision": "c6f07a95a128ede65e0689f2484c711b",
     "url": "/Pokemon-React-App/index.html"
   }
 ];
