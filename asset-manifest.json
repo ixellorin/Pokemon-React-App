@@ -7,7 +7,7 @@
   "runtime~main.js": "/my-pokemon-app/static/js/runtime~main.e126dab6.js",
   "runtime~main.js.map": "/my-pokemon-app/static/js/runtime~main.e126dab6.js.map",
   "static/media/35_CLEFAIRY.png": "/my-pokemon-app/static/media/35_CLEFAIRY.615baf87.png",
-  "static/media/styles.css": "/my-pokemon-app/static/media/pokemon_fire_red.65780863.ttf",
+  "static/media/styles.css": "/my-pokemon-app/static/media/cursor.a8d3588f.png",
   "static/media/expand_button.png": "/my-pokemon-app/static/media/expand_button.0d618221.png",
   "static/media/logo.svg": "/my-pokemon-app/static/media/logo.5d5d9eef.svg",
   "static/media/100_VOLTORB.png": "/my-pokemon-app/static/media/100_VOLTORB.14c169b7.png",
@@ -163,6 +163,6 @@
   "static/media/expand_button_active.png": "/my-pokemon-app/static/media/expand_button_active.ef68b8b2.png",
   "static/css/main.839814a9.chunk.css.map": "/my-pokemon-app/static/css/main.839814a9.chunk.css.map",
   "index.html": "/my-pokemon-app/index.html",
-  "precache-manifest.f155a7654877c1dc1b60601fbf7823a3.js": "/my-pokemon-app/precache-manifest.f155a7654877c1dc1b60601fbf7823a3.js",
+  "precache-manifest.fb9bb438ed51d29be48ae794317cb3a5.js": "/my-pokemon-app/precache-manifest.fb9bb438ed51d29be48ae794317cb3a5.js",
   "service-worker.js": "/my-pokemon-app/service-worker.js"
 }

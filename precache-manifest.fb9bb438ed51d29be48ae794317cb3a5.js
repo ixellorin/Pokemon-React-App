@@ -16,12 +16,12 @@ self.__precacheManifest = [
     "url": "/my-pokemon-app/static/js/runtime~main.e126dab6.js"
   },
   {
-    "revision": "a8d3588fd41ce54b8cc5646c8ceeedeb",
-    "url": "/my-pokemon-app/static/media/cursor.a8d3588f.png"
-  },
-  {
     "revision": "65780863e7302fe257df982341d6a1cb",
     "url": "/my-pokemon-app/static/media/pokemon_fire_red.65780863.ttf"
+  },
+  {
+    "revision": "a8d3588fd41ce54b8cc5646c8ceeedeb",
+    "url": "/my-pokemon-app/static/media/cursor.a8d3588f.png"
   },
   {
     "revision": "0d618221487fe8fa6889d5f650e262b0",
