@@ -60,7 +60,7 @@ class ActiveBoard extends React.Component {
   getImage(i) {
     console.log(this.props.pokemon);
     if (this.props.pokemon[i] == null) {
-      return <img className="grid-image" src={null} />;
+      return <img className="grid-image" src={filler} />;
     } else {
       return <img className="grid-image" src={activePokemonImages[this.props.pokemon[i].id - 1]} />;
     }
@@ -91,6 +91,7 @@ function naturalCompare(a, b) {
 
 var activePokemonImages = importAll(require.context('../images/pokemon/activeIcons', true, /.*\.png$/)).sort(naturalCompare);
 
+var filler = require("../images/misc/active_filler.png");
 
 function fillArrayWithPokemon(array) {
   for (var i = 0; i < array.length; i++) {

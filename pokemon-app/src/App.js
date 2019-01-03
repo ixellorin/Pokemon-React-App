@@ -17,7 +17,7 @@ class App extends Component {
     super(props);
     let listOfPokemon = initPokemonList();
     let myPokemon = initMyPokemon();
-    let activePokemon = initActivePokemon();
+    let activePokemon = initActivePokemon(myPokemon);
 
     this.addPokemon = this.addPokemon.bind(this);
     this.removePokemon = this.removePokemon.bind(this);
@@ -92,15 +92,15 @@ class App extends Component {
     } else if (this.pokemonAlreadyActive(pokemon)) {
       console.log(pokemon.name + " is already active");
     } else {
+      pokemon.isActive = true;
       var newActivePokemon = this.state.activePokemon.slice();
       newActivePokemon = this.insertAtFirstNull(pokemon, newActivePokemon);
       this.setState({
         activePokemon: newActivePokemon,
       }, () => {
         this.finishOptions();
+        localStorage.setItem('myPokemon', JSON.stringify(this.state.myPokemon));
         console.log("added " + pokemon.name + " to active roster...")
-        pokemon.isActive = true;
-        localStorage.setItem('activePokemon', JSON.stringify(this.state.activePokemon));
       });
     }
 
@@ -277,31 +277,22 @@ function initMyPokemon() {
 
 }
 
-function initActivePokemon() {
+function initActivePokemon(myPokemon) {
+  console.log(myPokemon);
   console.log('Fetching your active my pokemon...');
-  var activePokemon = localStorage.getItem('activePokemon');
-  if (activePokemon == null) {
-    console.log('No data found, initializing your active pokemon...');
-    localStorage.setItem('activePokemon', JSON.stringify(Array(6).fill(null)));
-    return Array(6).fill(null);
-  } else {
-    console.log('Found your active pokemon!');
-    let parsed = JSON.parse(activePokemon);
-    let empty = true;
-
-    for (var i = 0; i < parsed.length; i++) {
-      if (parsed[i] != null) {
-        empty = false;
-        break;
-      }
+  let activePokemon = [];
+  for (var i = 0; i < myPokemon.length; i++) {
+    if (myPokemon[i].isActive) {
+      console.log(myPokemon[i]);
+      activePokemon.push(myPokemon[i]);
     }
-
-    if (empty) {
-      console.log('but... you don\'t have any active pokemon! :(');
-    }
-    console.log(parsed);
-    return parsed;
   }
+
+  for (var m = activePokemon.length; m < 6; m++) {
+    activePokemon.push(null);
+    console.log(activePokemon);
+  }
+  return activePokemon;
 }
 
 export default App;
