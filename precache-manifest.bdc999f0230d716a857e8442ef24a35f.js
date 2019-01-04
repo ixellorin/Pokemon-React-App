@@ -4,8 +4,8 @@ self.__precacheManifest = [
     "url": "/Pokemon-React-App/static/media/98_KRABBY.4988de27.png"
   },
   {
-    "revision": "4d15f9312c5df00b4d85",
-    "url": "/Pokemon-React-App/static/css/main.b812630d.chunk.css"
+    "revision": "f0dfb1457a3907c7d4a6",
+    "url": "/Pokemon-React-App/static/css/main.4fe3395c.chunk.css"
   },
   {
     "revision": "60eb50cf4d7a0774ecca",
@@ -628,8 +628,8 @@ self.__precacheManifest = [
     "url": "/Pokemon-React-App/static/media/97_HYPNO.dd326808.png"
   },
   {
-    "revision": "4d15f9312c5df00b4d85",
-    "url": "/Pokemon-React-App/static/js/main.4d15f931.chunk.js"
+    "revision": "f0dfb1457a3907c7d4a6",
+    "url": "/Pokemon-React-App/static/js/main.f0dfb145.chunk.js"
   },
   {
     "revision": "40f0f43683bb85de92cd0db0d186c43d",
@@ -1252,7 +1252,7 @@ self.__precacheManifest = [
     "url": "/Pokemon-React-App/static/media/expand_button_active.ef68b8b2.png"
   },
   {
-    "revision": "3ec3e42e973e889e3905deba9739449b",
+    "revision": "49029727a847ebd050e6b07e3f430f4f",
     "url": "/Pokemon-React-App/index.html"
   }
 ];
