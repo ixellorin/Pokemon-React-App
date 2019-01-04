@@ -21,7 +21,7 @@ body {
   font-family: 'PokeFont', 'Barlow', 'Signika', 'Muli', 'Raleway', sans-serif ! important;
   text-align: center;
   margin: 0;
-  background-image: radial-gradient(ellipse farthest-corner at top left, #0084B4, #FFFFFF);
+  background-image: #8F8FA7;
   color: #FFFFFF;
   height: 100%;
   display: block;
@@ -193,10 +193,19 @@ body {
   display: inline-block;
   height: 100%;
   width: 98%;
+  background-image: url(../images/misc/pokemon_bg_red.png);
+  background-repeat: repeat;
+}
+
+.my-pokemon-header {
+  color: #000000;
+  margin-right: 10%;
+  margin-left: 10%;
+  text-align: center;
 }
 
 .my-pokemon-buttons-container {
-  width: 98.5%;
+  width: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -224,10 +233,11 @@ body {
   border-radius: 10px;
   border: 5px solid #000000;
   color: #000000 !important;
+  vertical-align: top ! important;
 }
 
 .my-pokemon-entry-image {
-  height: 30px;
+  height: 65px;
 }
 
 .remove-entry-button {
@@ -301,6 +311,14 @@ body {
   text-decoration: none;
 }
 
+
+.entry-text {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  bottom: 20px;
+  padding-left: 10px; 
+}
 
 .entry-options-dialog {
   background-color: #4CAF50;

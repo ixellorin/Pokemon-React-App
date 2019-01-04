@@ -22,7 +22,9 @@ class MyPokemon extends React.Component {
 
     return (
         <div className="my-pokemon">
-          <h2>MY POK&eacute;MON</h2>
+          <div className="my-pokemon-header">
+            <h2>MY POK&eacute;MON</h2>
+          </div>
           <div className="my-pokemon-list">
             {buttonsList}
           </div>

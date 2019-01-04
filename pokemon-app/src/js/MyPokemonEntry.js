@@ -14,9 +14,11 @@ class MyPokemonEntry extends React.Component {
   render() {
     return (
       <div className="my-pokemon-entry">
-          <img className="my-pokemon-entry-image" src={myPokemonImages[this.props.pokemon.id]} />
-          {this.props.pokemon.name.toUpperCase()}
-          <img className="entry-options-button" onClick={(e) => this.props.toggleEntryOptions(this.props.pokemon, e)} src={optionsButton}/>
+      <img className="my-pokemon-entry-image" src={myPokemonImages[this.props.pokemon.id]} />
+          <span className="entry-text">
+            {this.props.pokemon.name.toUpperCase()}
+          </span>
+        <img className="entry-options-button" onClick={(e) => this.props.toggleEntryOptions(this.props.pokemon, e)} src={optionsButton}/>
       </div>
   );
 }
