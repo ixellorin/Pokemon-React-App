@@ -21,12 +21,19 @@ class AddPokemon extends React.Component {
 
     var onClick = this.props.addPokemon;
     var buttonsList = pokemon.map(function(pokemon) {
-      return <li className="add-pokemon-list-item"><button onClick={() => onClick(pokemon.name, pokemon.id)} className={addPokemonButton}>{pokemon.name.toUpperCase()}</button></li>
+      return <button onClick={() => onClick(pokemon.name, pokemon.id)} className={addPokemonButton}>
+          <img className="add-pokemon-entry-image" src={myPokemonImages[pokemon.id]} />
+            <span className="add-pokemon-entry-text">
+              {pokemon.name.toUpperCase()}
+            </span>
+          </button>
     })
 
     return (
       <div className="add-pokemon-dialog" id="add-pokemon-dialog">
-        <h1>Add Pokemon</h1>
+      <div className="add-pokemon-header">
+        <h3>ADD POK&eacute;MON</h3>
+      </div>
         <ul className="add-pokemon-list">
           {buttonsList}
         </ul>
@@ -34,5 +41,13 @@ class AddPokemon extends React.Component {
     );
   }
 }
+
+function importAll(r) {
+  let images = {};
+  r.keys().map((item, index) => { images[item.replace('./', '').replace('.png', '')] = r(item); });
+  return images;
+}
+
+var myPokemonImages = importAll(require.context('../images/pokemon/myPokemonIcons', true, /.*\.png$/));
 
 export default AddPokemon;

@@ -23,6 +23,7 @@ body {
   margin: 0;
   background-image: #8F8FA7;
   color: #FFFFFF;
+  text-shadow: 3px 3px #000000;
   height: 100%;
   display: block;
   align-items: center;
@@ -87,6 +88,7 @@ body {
 .board {
   border: 10px solid #313131;
   border-radius: 15px;
+  border-style: ridge;
   text-align: left;
   background-color: #0084B4;
   display: grid;
@@ -193,14 +195,11 @@ body {
   display: inline-block;
   height: 100%;
   width: 98%;
-  background-image: url(../images/misc/pokemon_bg_red.png);
+  background-image: url(../images/misc/pokemon_bg_blue.png);
   background-repeat: repeat;
 }
 
 .my-pokemon-header {
-  color: #000000;
-  margin-right: 10%;
-  margin-left: 10%;
   text-align: center;
 }
 
@@ -225,19 +224,29 @@ body {
   width: 100%;
   max-height: 36vw;
   overflow-y: scroll;
+  background-color: #000000;
 }
 
 .my-pokemon-entry {
   position: relative;
-  background-color: #FFE066;
+  /* background-color: #FFE066; */
+  background-image: linear-gradient(180deg, #3793E0 80%, #85C3DC 20%) ! important;
   border-radius: 10px;
   border: 5px solid #000000;
-  color: #000000 !important;
   vertical-align: top ! important;
+  padding-left: 2%;
 }
 
 .my-pokemon-entry-image {
   height: 65px;
+}
+
+.my-pokemon-entry-text {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  bottom: 20px;
+  padding-left: 10px;
 }
 
 .remove-entry-button {
@@ -258,17 +267,36 @@ body {
 .add-pokemon.button {
   background-color: #4CAF50;
   width: 100%;
+  font-size: 20px;
 }
 
-.remove-pokemon-button {
-  background-color: #FF3300;
-  width: 50%;
+.entry-options-button {
+  position: absolute;
+  right: 0px;
+  top: 10px;
+  height: 75%;
+  cursor: pointer;
 }
 
-.add-pokemon-list-item{
-  list-style-type: none;
-  left: 0;
-  width: 100%;
+/* Add Pokemon */
+
+.add-pokemon-dialog {
+  background-color: #8FB767;
+  border: 10px solid #BFE097;
+  border-style: ridge;
+  display: none;
+  z-index: 2;
+  position: absolute;
+  top: 20px;
+  padding-left: 0;
+  right: 25vw;
+  max-height: 30vw;
+  width: 20%;
+  overflow-y: scroll;
+}
+
+.add-pokemon-header {
+  text-align: center;
 }
 
 .add-pokemon-list{
@@ -276,49 +304,29 @@ body {
   width: 100%;
 }
 
-.entry-options-list-item{
-  list-style-type: none;
-  left: 0;
-  width: 100%;
-}
-
-.entry-options-list{
-  padding-left: 0;
-  width: 100%;
-}
-
-.add-pokemon-dialog {
-  background-color: #4CAF50;
-  border: 5px solid #000000;
-  border-radius: 5px;
-  display: none;
-  z-index: 2;
-  position: absolute;
-  top: 0px;
-  padding-left: 0;
-  max-height: 30vw;
-  width: 97%;
-  overflow-y: scroll;
-}
-
 .add-pokemon-list-button {
-  background-color: grey;
   border: 5px solid #000000;
   border-radius: 5px;
   padding: 5px 10px;
   width: 100%;
   text-align: center;
-  text-decoration: none;
+  background-image: linear-gradient(180deg, #C0680F 80%, #D1A31C 20%) ! important;
 }
 
+.add-pokemon-entry-image {
+  height: 65px;
+}
 
-.entry-text {
+.add-pokemon-entry-text {
   display: inline-block;
   vertical-align: middle;
   position: relative;
   bottom: 20px;
-  padding-left: 10px; 
+  padding-left: 10px;
+  font-size: 20px;
 }
+
+/* Entry Options */
 
 .entry-options-dialog {
   background-color: #4CAF50;
@@ -335,6 +343,17 @@ body {
   overflow-y: scroll;
 }
 
+.entry-options-list-item{
+  list-style-type: none;
+  left: 0;
+  width: 100%;
+}
+
+.entry-options-list{
+  padding-left: 0;
+  width: 100%;
+}
+
 .entry-options-header {
   display: inline;
 }
@@ -345,14 +364,6 @@ body {
 
 .entry-options-image {
   height: 30px;
-}
-
-.entry-options-button {
-  position: absolute;
-  right: 0px;
-  top: 5px;
-  height: 75%;
-  cursor: pointer;
 }
 
 .entry-options-active-selector {

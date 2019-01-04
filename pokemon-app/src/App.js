@@ -233,10 +233,10 @@ class App extends Component {
       <div className="board">
         <div id="active-pokemon-container" className="active-pokemon-container">
           <ActiveBoard pokemon={this.state.activePokemon} ref={ (activePokemonContainer) => this.activePokemonContainer = activePokemonContainer}/>
+          <AddPokemon addPokemon={this.addPokemon} listOfPokemon={this.state.listOfPokemon}/>
         </div>
         <div id="my-pokemon-container" className="my-pokemon-container"  ref={ (myPokemonContainer) => this.myPokemonContainer = myPokemonContainer}>
           <MyPokemon toggleAddPokemonDialog={() => this.toggleAddPokemonDialog()} removePokemon={this.removePokemon} toggleEntryOptions={this.toggleEntryOptions} myPokemon={this.state.myPokemon}/>
-          <AddPokemon addPokemon={this.addPokemon} listOfPokemon={this.state.listOfPokemon}/>
           <EntryOptions removePokemon={this.removePokemon} setActive={this.addActivePokemon} removeActivePokemon={this.removeActivePokemon} pokemon={this.state.currentPokemonForOptions}/>
         </div>
       </div>
