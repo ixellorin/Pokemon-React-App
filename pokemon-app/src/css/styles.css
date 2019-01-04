@@ -116,12 +116,6 @@ body {
   margin-bottom: 0px;
 }
 
-/* .grid-row::after {
-  content: "";
-  clear: both;
-  display: table;
-} */
-
 .grid-column {
   display: inline;
   align-items: center;
@@ -150,6 +144,7 @@ body {
   border-left: 10px solid #616161;
   border-right: 10px solid #616161;
 }
+
 .grid-column.top.right {
   border-left: 0px solid #616161;
   border-right: 10px solid #616161;
@@ -184,7 +179,6 @@ body {
   width: 100%;
 
 }
-
 
 /* My Pokemon */
 
@@ -314,14 +308,14 @@ body {
 }
 
 .add-pokemon-entry-image {
-  height: 65px;
+  height: 45px;
 }
 
 .add-pokemon-entry-text {
   display: inline-block;
   vertical-align: middle;
   position: relative;
-  bottom: 20px;
+  bottom: 15px;
   padding-left: 10px;
   font-size: 20px;
 }
