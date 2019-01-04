@@ -4,7 +4,7 @@
 @import url('https://fonts.googleapis.com/css?family=Barlow');
 @font-face {
   font-family: 'PokeFont';
-  src: url(../fonts/pokemon_fire_red.ttf);
+  src: url(../fonts/pokemon-advanced-battle.ttf);
 }
 
 /* Globals */
@@ -14,6 +14,7 @@ html {
   height: 100%;
   min-height: 20vw;
   cursor: url(../images/misc/cursor.png), auto;
+  font-size: 25px;
 }
 
 body {
@@ -213,7 +214,7 @@ body {
 
 .my-pokemon-list {
   width: 100%;
-  max-height: 43vw;
+  max-height: 36vw;
   overflow-y: scroll;
 }
 
