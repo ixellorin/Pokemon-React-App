@@ -1,7 +1,7 @@
 {
   "main.css": "/Pokemon-React-App/static/css/main.4fe3395c.chunk.css",
-  "main.js": "/Pokemon-React-App/static/js/main.f0dfb145.chunk.js",
-  "main.js.map": "/Pokemon-React-App/static/js/main.f0dfb145.chunk.js.map",
+  "main.js": "/Pokemon-React-App/static/js/main.6cc3a571.chunk.js",
+  "main.js.map": "/Pokemon-React-App/static/js/main.6cc3a571.chunk.js.map",
   "static/js/1.60eb50cf.chunk.js": "/Pokemon-React-App/static/js/1.60eb50cf.chunk.js",
   "static/js/1.60eb50cf.chunk.js.map": "/Pokemon-React-App/static/js/1.60eb50cf.chunk.js.map",
   "runtime~main.js": "/Pokemon-React-App/static/js/runtime~main.14e701ad.js",
@@ -315,6 +315,6 @@
   "static/media/expand_button_active.png": "/Pokemon-React-App/static/media/expand_button_active.ef68b8b2.png",
   "static/css/main.4fe3395c.chunk.css.map": "/Pokemon-React-App/static/css/main.4fe3395c.chunk.css.map",
   "index.html": "/Pokemon-React-App/index.html",
-  "precache-manifest.bdc999f0230d716a857e8442ef24a35f.js": "/Pokemon-React-App/precache-manifest.bdc999f0230d716a857e8442ef24a35f.js",
+  "precache-manifest.4ecd3d210db0cc72032fc7a9d4baefce.js": "/Pokemon-React-App/precache-manifest.4ecd3d210db0cc72032fc7a9d4baefce.js",
   "service-worker.js": "/Pokemon-React-App/service-worker.js"
 }
