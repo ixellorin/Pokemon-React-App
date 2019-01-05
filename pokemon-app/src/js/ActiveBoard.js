@@ -62,7 +62,7 @@ class ActiveBoard extends React.Component {
     if (this.props.pokemon[i] == null) {
       return <img className="grid-image" src={filler} />;
     } else {
-      return <img className="grid-image" src={activePokemonImages[this.props.pokemon[i].id - 1]} />;
+      return <img className="grid-image" onClick={(e) => this.props.onClick(this.props.pokemon[i], e)} src={activePokemonImages[this.props.pokemon[i].id - 1]} />;
     }
   }
 

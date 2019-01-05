@@ -126,6 +126,7 @@ class App extends Component {
       if (pokemon === this.state.activePokemon[i]) {
         newActivePokemon[i] = null;
         removeSuccessful = true;
+        this.finishOptions();
         break;
       }
     }
@@ -179,13 +180,22 @@ class App extends Component {
       }, () => {
         if (this.state.showEntryOptionsDialog) {
             console.log("Opening entry options...");
+
             entryOptionsDialog.style.display = "block";
-            target.src = optionsButtonActive;
+
+            if (target.className == "entry-options-button") {
+              target.src = optionsButtonActive;
+            }
+
             entryOptionsDialog.style.top = (anchor.y - 10).toString() + "px";
         } else {
             console.log("Closing entry options...");
             entryOptionsDialog.style.display = "none";
-            target.src = optionsButton;
+
+            if (target.className == "entry-options-button") {
+              target.src = optionsButton;
+            }
+
             this.setState({
               currentPokemonForOptions: null,
             }, () => {
@@ -232,7 +242,7 @@ class App extends Component {
     return (
       <div className="board">
         <div id="active-pokemon-container" className="active-pokemon-container">
-          <ActiveBoard pokemon={this.state.activePokemon} ref={ (activePokemonContainer) => this.activePokemonContainer = activePokemonContainer}/>
+          <ActiveBoard pokemon={this.state.activePokemon} onClick={this.toggleEntryOptions} ref={ (activePokemonContainer) => this.activePokemonContainer = activePokemonContainer}/>
           <AddPokemon addPokemon={this.addPokemon} listOfPokemon={this.state.listOfPokemon}/>
         </div>
         <div id="my-pokemon-container" className="my-pokemon-container"  ref={ (myPokemonContainer) => this.myPokemonContainer = myPokemonContainer}>
