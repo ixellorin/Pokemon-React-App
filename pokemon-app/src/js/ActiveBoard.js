@@ -49,10 +49,10 @@ class ActiveBoard extends React.Component {
 
         <div className="grid-row">
           <div className="grid-column bottom left">
-              {this.getImage(2)}
+              {this.getImage(4)}
           </div>
           <div className="grid-column bottom right">
-              {this.getImage(3)}
+              {this.getImage(5)}
           </div>
         </div>
 
