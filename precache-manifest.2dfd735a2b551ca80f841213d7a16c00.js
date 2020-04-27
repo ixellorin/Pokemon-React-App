@@ -4,24 +4,24 @@ self.__precacheManifest = [
     "url": "/Pokemon-React-App/static/media/98_KRABBY.4988de27.png"
   },
   {
-    "revision": "4a8556a52abe62bd1f39",
-    "url": "/Pokemon-React-App/static/css/main.088eec15.chunk.css"
+    "revision": "d039ec57514305ce9963",
+    "url": "/Pokemon-React-App/static/css/main.e2e77adb.chunk.css"
   },
   {
-    "revision": "60eb50cf4d7a0774ecca",
-    "url": "/Pokemon-React-App/static/js/1.60eb50cf.chunk.js"
+    "revision": "8ff1dccb32717e1ef40a",
+    "url": "/Pokemon-React-App/static/js/1.8ff1dccb.chunk.js"
   },
   {
     "revision": "14e701ad49b20be10b7c",
     "url": "/Pokemon-React-App/static/js/runtime~main.14e701ad.js"
   },
   {
-    "revision": "3c8ee564af4e06062ce78a4c242eab51",
-    "url": "/Pokemon-React-App/static/media/pokemon_bg_blue.3c8ee564.png"
-  },
-  {
     "revision": "a8d3588fd41ce54b8cc5646c8ceeedeb",
     "url": "/Pokemon-React-App/static/media/cursor.a8d3588f.png"
+  },
+  {
+    "revision": "3c8ee564af4e06062ce78a4c242eab51",
+    "url": "/Pokemon-React-App/static/media/pokemon_bg_blue.3c8ee564.png"
   },
   {
     "revision": "96ac02f67f7f479ad30123a00ad5414b",
@@ -30,10 +30,6 @@ self.__precacheManifest = [
   {
     "revision": "0d618221487fe8fa6889d5f650e262b0",
     "url": "/Pokemon-React-App/static/media/expand_button.0d618221.png"
-  },
-  {
-    "revision": "ee7cd8ed2dcec943251eb2763684fc6f",
-    "url": "/Pokemon-React-App/static/media/logo.ee7cd8ed.svg"
   },
   {
     "revision": "14c169b701ec14570f09bf5481249840",
@@ -628,8 +624,8 @@ self.__precacheManifest = [
     "url": "/Pokemon-React-App/static/media/97_HYPNO.dd326808.png"
   },
   {
-    "revision": "4a8556a52abe62bd1f39",
-    "url": "/Pokemon-React-App/static/js/main.4a8556a5.chunk.js"
+    "revision": "d039ec57514305ce9963",
+    "url": "/Pokemon-React-App/static/js/main.d039ec57.chunk.js"
   },
   {
     "revision": "40f0f43683bb85de92cd0db0d186c43d",
@@ -1252,7 +1248,7 @@ self.__precacheManifest = [
     "url": "/Pokemon-React-App/static/media/expand_button_active.ef68b8b2.png"
   },
   {
-    "revision": "425e2a59cb286c173e9fe3a6e14c755a",
+    "revision": "703dbbfeda896ecb55b65931aceae8a2",
     "url": "/Pokemon-React-App/index.html"
   }
 ];
