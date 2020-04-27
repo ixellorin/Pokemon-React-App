@@ -15,6 +15,7 @@ html {
   min-height: 20vw;
   cursor: url(../images/misc/cursor.png), auto;
   font-size: 25px;
+  background-color: #292929;
 }
 
 body {
@@ -86,13 +87,13 @@ body {
 
 
 .board {
-  border: 10px solid #313131;
+  border: 10px solid #292929;
   border-radius: 15px;
   border-style: ridge;
   text-align: left;
-  background-color: #0084B4;
+  background-color: #292929;
   display: grid;
-  grid-template-columns: auto 24vw;
+  grid-template-columns: 350px 280px;
   grid-template-areas: 'active-pokemon my-pokemon';
   align-content: center;
   max-height: 100vh;
@@ -100,11 +101,12 @@ body {
 
 .active-pokemon-container {
   grid-area: 'activePokemon';
+  float: right;
 }
 
 .my-pokemon-container {
   grid-area: 'my-pokemon';
-  position: relative;
+  min-width: 150px;
 }
 
 /* Active Pokemon */
@@ -124,66 +126,64 @@ body {
   background-image: linear-gradient(#CCCCCC, #F2F2F2 10%, #CCCCCC);
   margin-top: 0px;
   margin-bottom: 0px;
-  width: 100%;
-  min-width: 250px;
-  min-height: 250px;
+  min-width: 150px;
+  min-height: 150px;
 }
 
 .grid-column.top {
-  border-bottom: 10px solid #616161;
-  border-top: 10px solid #616161;
+  border-bottom: 10px solid #292929;
+  border-top: 10px solid #292929;
 }
 
 .grid-column.top.left {
-  border-left: 10px solid #616161;
-  border-right: 0px solid #616161;
+  border-left: 10px solid #292929;
+  border-right: 0px solid #292929;
   border-radius: 5px 0px 0px 0px;
 }
 
-.grid-column.top.middle {
-  border-left: 10px solid #616161;
-  border-right: 10px solid #616161;
+.grid-column.top.right {
+  border-left: 10px solid #292929;
+  border-right: 10px solid #292929;
 }
 
-.grid-column.top.right {
-  border-left: 0px solid #616161;
-  border-right: 10px solid #616161;
+.grid-column.middle.left {
+  border-left: 10px solid #292929;
+  border-right: 0px solid #292929;
+}
+
+.grid-column.middle.right {
+  border-left: 10px solid #292929;
+  border-right: 10px solid #292929;
+  border-top: 0px solid #292929;
 }
 
 .grid-column.bottom.left {
-  border-bottom: 10px solid #616161;
-  border-left: 10px solid #616161;
-  border-right: 0px solid #616161;
-  border-top: 0px solid #616161;
+  border-bottom: 10px solid #292929;
+  border-left: 10px solid #292929;
+  border-right: 0px solid #292929;
+  border-top: 10px solid #292929;
   border-radius: 0px 0px 0px 5px;
 }
 
-.grid-column.bottom.middle {
-  border-bottom: 10px solid #616161;
-  border-left: 10px solid #616161;
-  border-right: 10px solid #616161;
-  border-top: 0px solid #616161;
-}
 
 .grid-column.bottom.right {
-  border-bottom: 10px solid #616161;
-  border-left: 0px solid #616161;
-  border-right: 10px solid #616161;
-  border-top: 0px solid #616161;
+  border-bottom: 10px solid #292929;
+  border-left: 10px solid #292929;
+  border-right: 10px solid #292929;
+  border-top: 10px solid #292929;
 }
 
 .grid-image {
   display: block;
   margin: 0;
-  min-width: 250px;
-  width: 100%;
+  min-width: 150px;
 
 }
 
 /* My Pokemon */
 
 .my-pokemon {
-  border-left: 10px solid #313131;
+  border: 10px solid #000000;
   margin-right: 0px;
   position: relative;
   display: inline-block;
@@ -195,6 +195,11 @@ body {
 
 .my-pokemon-header {
   text-align: center;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  background-color: #292929;
 }
 
 .my-pokemon-buttons-container {
@@ -216,7 +221,7 @@ body {
 
 .my-pokemon-list {
   width: 100%;
-  max-height: 36vw;
+  max-height: calc(100vh - 140px);
   overflow-y: scroll;
   background-color: #000000;
 }
@@ -232,15 +237,17 @@ body {
 }
 
 .my-pokemon-entry-image {
-  height: 65px;
+  padding-top:5px;
+  height: 30px;
 }
 
 .my-pokemon-entry-text {
   display: inline-block;
   vertical-align: middle;
   position: relative;
-  bottom: 20px;
+  bottom: 8px;
   padding-left: 10px;
+  font-size: 20px;
 }
 
 .remove-entry-button {
@@ -250,8 +257,8 @@ body {
   right: 0px;
   padding-left: 3px;
   padding-top: 2px;
-  height: 35px;
-  width: 35px;
+  height: 25px;
+  width: 25px;
   border-radius: 50%;
   border: 5px solid #000000;
   background-color: #CCCCCC;
@@ -267,8 +274,8 @@ body {
 .entry-options-button {
   position: absolute;
   right: 0px;
-  top: 15px;
-  height: 75%;
+  top: 10px;
+  height: 50%;
   max-height: 45px;
   cursor: pointer;
 }
@@ -284,9 +291,9 @@ body {
   position: absolute;
   top: 20px;
   padding-left: 0;
-  right: 25vw;
-  max-height: 30vw;
-  width: 20%;
+  right: 10px;
+  max-height: 80vh;
+  width: 40%;
   overflow-y: scroll;
 }
 
@@ -330,11 +337,10 @@ body {
   display: none;
   z-index: 2;
   position: absolute;
-  top: 0px;
-  left: 25px;
+  right: 70px;
   padding-left: 10px;
   max-height: 44vw;
-  width: 75%;
+  width: 30%;
   overflow-y: scroll;
 }
 
@@ -355,10 +361,11 @@ body {
 
 .entry-option {
   cursor: pointer;
+  font-size: 20px;
 }
 
 .entry-options-image {
-  height: 50px;
+  height: 40px;
 }
 
 .entry-options-active-selector {

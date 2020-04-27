@@ -33,23 +33,26 @@ class ActiveBoard extends React.Component {
           <div className="grid-column top left">
               {this.getImage(0)}
           </div>
-          <div className="grid-column top middle">
+          <div className="grid-column top right">
               {this.getImage(1)}
           </div>
-          <div className="grid-column top right">
+        </div>
+
+        <div className="grid-row">
+          <div className="grid-column middle left">
               {this.getImage(2)}
+          </div>
+          <div className="grid-column middle right">
+              {this.getImage(3)}
           </div>
         </div>
 
         <div className="grid-row">
           <div className="grid-column bottom left">
-              {this.getImage(3)}
-          </div>
-          <div className="grid-column bottom middle">
-              {this.getImage(4)}
+              {this.getImage(2)}
           </div>
           <div className="grid-column bottom right">
-              {this.getImage(5)}
+              {this.getImage(3)}
           </div>
         </div>
 
