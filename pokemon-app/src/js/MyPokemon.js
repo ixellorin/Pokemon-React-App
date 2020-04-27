@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import AddPokemon from './AddPokemon';
+import React from 'react';
 import MyPokemonEntry from './MyPokemonEntry';
 import '../css/styles.css';
 import classNames from 'classnames';

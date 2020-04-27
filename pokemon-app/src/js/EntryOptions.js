@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../css/styles.css';
-import classNames from 'classnames';
 var optionsButton = require('../images/misc/expand_button.png');
 
 class EntryOptions extends React.Component {
@@ -12,7 +11,7 @@ class EntryOptions extends React.Component {
   }
   render() {
 
-    var source = (this.props.pokemon == null) ? null : myPokemonImages[this.props.pokemon.id]
+    var source = (this.props.pokemon === null) ? null : myPokemonImages[this.props.pokemon.id]
 
     return (
       <div className="entry-options-dialog" id="entry-options-dialog">
@@ -33,11 +32,11 @@ class EntryOptions extends React.Component {
   mouseIn(e) {
     e.preventDefault();
 
-    if (e.target.id == "set-active-option") {
+    if (e.target.id === "set-active-option") {
       document.getElementById("entry-options-active-selector").style.visibility = "visible";
-    } else if (e.target.id == "set-inactive-option") {
+    } else if (e.target.id === "set-inactive-option") {
       document.getElementById("entry-options-inactive-selector").style.visibility = "visible";
-    } else if (e.target.id == "remove-option") {
+    } else if (e.target.id === "remove-option") {
       document.getElementById("entry-options-remove-selector").style.visibility = "visible";
     }
   }
@@ -46,11 +45,11 @@ class EntryOptions extends React.Component {
     e.preventDefault();
 
 
-    if (e.target.id == "set-active-option") {
+    if (e.target.id === "set-active-option") {
       document.getElementById("entry-options-active-selector").style.visibility = "hidden";
-    } else if (e.target.id == "set-inactive-option") {
+    } else if (e.target.id === "set-inactive-option") {
       document.getElementById("entry-options-inactive-selector").style.visibility = "hidden";
-    } else if (e.target.id == "remove-option") {
+    } else if (e.target.id === "remove-option") {
       document.getElementById("entry-options-remove-selector").style.visibility = "hidden";
     }
   }

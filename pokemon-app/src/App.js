@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import ActiveBoard from './js/ActiveBoard';
 import MyPokemon from './js/MyPokemon';
-import NavBar from './js/NavBar';
 import EntryOptions from './js/EntryOptions';
 import AddPokemon from './js/AddPokemon';
 import Pokemon from './js/Pokemon';
@@ -66,7 +64,7 @@ class App extends Component {
   isActiveFull() {
 
     for (var i = 0; i < this.state.activePokemon.length; i++) {
-      if (this.state.activePokemon[i] == null) {
+      if (this.state.activePokemon[i] === null) {
         return false;
       }
     }
@@ -108,7 +106,7 @@ class App extends Component {
 
   insertAtFirstNull(obj, array) {
     for (var i = 0; i < array.length; i++) {
-      if (array[i] == null) {
+      if (array[i] === null) {
         array[i] = obj;
         return array;
       }
@@ -183,7 +181,7 @@ class App extends Component {
 
             entryOptionsDialog.style.display = "block";
 
-            if (target.className == "entry-options-button") {
+            if (target.className === "entry-options-button") {
               target.src = optionsButtonActive;
             }
 
@@ -192,7 +190,7 @@ class App extends Component {
             console.log("Closing entry options...");
             entryOptionsDialog.style.display = "none";
 
-            if (target.className == "entry-options-button") {
+            if (target.className === "entry-options-button") {
               target.src = optionsButton;
             }
 
@@ -246,8 +244,8 @@ class App extends Component {
         </div>
         <div id="my-pokemon-container" className="my-pokemon-container"  ref={ (myPokemonContainer) => this.myPokemonContainer = myPokemonContainer}>
           <MyPokemon toggleAddPokemonDialog={() => this.toggleAddPokemonDialog()} removePokemon={this.removePokemon} toggleEntryOptions={this.toggleEntryOptions} myPokemon={this.state.myPokemon}/>
-          <AddPokemon addPokemon={this.addPokemon} listOfPokemon={this.state.listOfPokemon}/>
           <EntryOptions removePokemon={this.removePokemon} setActive={this.addActivePokemon} removeActivePokemon={this.removeActivePokemon} pokemon={this.state.currentPokemonForOptions}/>
+          <AddPokemon addPokemon={this.addPokemon} listOfPokemon={this.state.listOfPokemon}/>
         </div>
       </div>
     );
@@ -259,7 +257,7 @@ class App extends Component {
 function initPokemonList() {
   console.log('Fetching all pokemon...');
   var allPokemon = localStorage.getItem('listOfPokemon');
-  if (allPokemon == null) {
+  if (allPokemon === null) {
     localStorage.setItem('listOfPokemon', JSON.stringify(require('./data/listOfPokemon.json')));
     return JSON.parse(JSON.stringify(require('./data/listOfPokemon.json')));
   } else {
@@ -271,14 +269,14 @@ function initPokemonList() {
 function initMyPokemon() {
   console.log('Fetching your pokemon...');
   var myPokemon = localStorage.getItem('myPokemon')
-  if (myPokemon == null) {
+  if (myPokemon === null) {
     console.log('No data found, initializing your pokemon...');
     localStorage.setItem('myPokemon', JSON.stringify([]));
     return [];
   } else {
     let parsed = JSON.parse(myPokemon);
     console.log('Found your pokemon!');
-    if (parsed.length == 0) {
+    if (parsed.length === 0) {
       console.log('...but you don\'t have any pokemon! :(');
     }
     console.log(parsed);

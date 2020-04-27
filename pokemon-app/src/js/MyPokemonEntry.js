@@ -1,9 +1,5 @@
-import React, { Component } from 'react';
-import '../css/styles.css';
-import classNames from 'classnames';
+import React from 'react';
 var optionsButton = require('../images/misc/expand_button.png');
-
-var pokemon = null;
 
 class MyPokemonEntry extends React.Component {
 

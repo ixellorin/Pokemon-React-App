@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../css/styles.css';
 
 class ActiveBoard extends React.Component {
@@ -95,11 +95,5 @@ function naturalCompare(a, b) {
 var activePokemonImages = importAll(require.context('../images/pokemon/activeIcons', true, /.*\.png$/)).sort(naturalCompare);
 
 var filler = require("../images/misc/active_filler.png");
-
-function fillArrayWithPokemon(array) {
-  for (var i = 0; i < array.length; i++) {
-    array[i] = activePokemonImages[Math.floor(Math.random() * 151)];
-    }
-  }
 
 export default ActiveBoard;

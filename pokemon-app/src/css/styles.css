@@ -320,7 +320,7 @@ body {
   top: calc((100vh - var(--board-height)) / 2 + 20px);
   max-height: calc(var(--my-pokemon-height) - 70px);
   width: calc(var(--my-pokemon-width) - 20px);
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 .add-pokemon-header {
@@ -338,6 +338,8 @@ body {
   padding-left: 0;
   margin-top: 5px;
   width: 100%;
+  max-height: calc(var(--my-pokemon-height) - 160px);
+  overflow-y: scroll;
 }
 
 .add-pokemon-list-button {
