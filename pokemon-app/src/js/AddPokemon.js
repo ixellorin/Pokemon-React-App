@@ -32,7 +32,7 @@ class AddPokemon extends React.Component {
     return (
       <div className="add-pokemon-dialog" id="add-pokemon-dialog">
       <div className="add-pokemon-header">
-        <h3>ADD POK&eacute;MON</h3>
+        <h3 className="add-pokemon-header">ADD POK&eacute;MON</h3>
       </div>
         <ul className="add-pokemon-list">
           {buttonsList}
