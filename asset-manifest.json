@@ -1,7 +1,7 @@
 {
-  "main.css": "/Pokemon-React-App/static/css/main.4fe3395c.chunk.css",
-  "main.js": "/Pokemon-React-App/static/js/main.6cc3a571.chunk.js",
-  "main.js.map": "/Pokemon-React-App/static/js/main.6cc3a571.chunk.js.map",
+  "main.css": "/Pokemon-React-App/static/css/main.9d231d6b.chunk.css",
+  "main.js": "/Pokemon-React-App/static/js/main.97c76dc3.chunk.js",
+  "main.js.map": "/Pokemon-React-App/static/js/main.97c76dc3.chunk.js.map",
   "static/js/1.60eb50cf.chunk.js": "/Pokemon-React-App/static/js/1.60eb50cf.chunk.js",
   "static/js/1.60eb50cf.chunk.js.map": "/Pokemon-React-App/static/js/1.60eb50cf.chunk.js.map",
   "runtime~main.js": "/Pokemon-React-App/static/js/runtime~main.14e701ad.js",
@@ -9,7 +9,7 @@
   "static/media/101.png": "/Pokemon-React-App/static/media/101.1dd05e21.png",
   "static/media/styles.css": "/Pokemon-React-App/static/media/pokemon_bg_blue.3c8ee564.png",
   "static/media/expand_button.png": "/Pokemon-React-App/static/media/expand_button.0d618221.png",
-  "static/media/logo.svg": "/Pokemon-React-App/static/media/logo.5d5d9eef.svg",
+  "static/media/logo.svg": "/Pokemon-React-App/static/media/logo.ee7cd8ed.svg",
   "static/media/100_VOLTORB.png": "/Pokemon-React-App/static/media/100_VOLTORB.14c169b7.png",
   "static/media/101_ELECTRODE.png": "/Pokemon-React-App/static/media/101_ELECTRODE.47553e14.png",
   "static/media/102_EXEGGCUTE.png": "/Pokemon-React-App/static/media/102_EXEGGCUTE.775da62f.png",
@@ -313,8 +313,8 @@
   "static/media/98.png": "/Pokemon-React-App/static/media/98.261aec07.png",
   "static/media/99.png": "/Pokemon-React-App/static/media/99.3e4c2860.png",
   "static/media/expand_button_active.png": "/Pokemon-React-App/static/media/expand_button_active.ef68b8b2.png",
-  "static/css/main.4fe3395c.chunk.css.map": "/Pokemon-React-App/static/css/main.4fe3395c.chunk.css.map",
+  "static/css/main.9d231d6b.chunk.css.map": "/Pokemon-React-App/static/css/main.9d231d6b.chunk.css.map",
   "index.html": "/Pokemon-React-App/index.html",
-  "precache-manifest.4ecd3d210db0cc72032fc7a9d4baefce.js": "/Pokemon-React-App/precache-manifest.4ecd3d210db0cc72032fc7a9d4baefce.js",
+  "precache-manifest.871e5964cf9886b46bc98e76c9402188.js": "/Pokemon-React-App/precache-manifest.871e5964cf9886b46bc98e76c9402188.js",
   "service-worker.js": "/Pokemon-React-App/service-worker.js"
 }
