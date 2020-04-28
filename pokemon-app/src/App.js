@@ -24,6 +24,9 @@ class App extends Component {
     this.addActivePokemon = this.addActivePokemon.bind(this);
     this.removeActivePokemon = this.removeActivePokemon.bind(this);
     this.finishOptions = this.finishOptions.bind(this);
+    this.handleSwap = this.handleSwap.bind(this);
+    this.toggleSwap = this.toggleSwap.bind(this)
+    this.handleKeyPress = this.handleKeyPress.bind(this)
 
     this.state = {
       activePokemon: activePokemon,
@@ -32,11 +35,35 @@ class App extends Component {
       showAddPokemonDialog: false,
       currentPokemonForOptions: null,
       showEntryOptionsDialog: false,
+      isSwapping: false,
       // activePokemonHeight: null,
       // myPokemonHeight: null,
     };
-
     // this.updateDimensions = this.updateDimensions.bind(this);
+  }
+
+  componentDidMount() {
+      document.addEventListener("keydown", this.handleKeyPress, false);
+  }
+
+  componentWillUnmount(){
+    document.removeEventListener("keydown", this.handleKeyPress, false);
+  }
+
+  render() {
+
+    return (
+      <div className="board">
+        <div id="active-pokemon-container" className="active-pokemon-container">
+          <ActiveBoard pokemon={this.state.activePokemon} onClick={this.toggleEntryOptions} ref={ (activePokemonContainer) => this.activePokemonContainer = activePokemonContainer}/>
+        </div>
+        <div id="my-pokemon-container" className="my-pokemon-container"  ref={ (myPokemonContainer) => this.myPokemonContainer = myPokemonContainer}>
+          <MyPokemon toggleAddPokemonDialog={() => this.toggleAddPokemonDialog()} removePokemon={this.removePokemon} toggleEntryOptions={this.toggleEntryOptions} myPokemon={this.state.myPokemon}/>
+          <EntryOptions removePokemon={this.removePokemon} setActive={this.addActivePokemon} activePokemon={this.state.activePokemon}   myPokemon={this.state.myPokemon} removeActivePokemon={this.removeActivePokemon} pokemon={this.state.currentPokemonForOptions} isSwapping={this.state.isSwapping} toggleSwap={this.toggleSwap} swapPokemon={this.handleSwap}/>
+          <AddPokemon addPokemon={this.addPokemon} listOfPokemon={this.state.listOfPokemon}/>
+        </div>
+      </div>
+    );
   }
 
   toggleAddPokemonDialog() {
@@ -93,6 +120,7 @@ class App extends Component {
       pokemon.isActive = true;
       var newActivePokemon = this.state.activePokemon.slice();
       newActivePokemon = this.insertAtFirstNull(pokemon, newActivePokemon);
+      console.log(newActivePokemon)
       this.setState({
         activePokemon: newActivePokemon,
       }, () => {
@@ -114,22 +142,19 @@ class App extends Component {
     return array;
   }
 
-
   removeActivePokemon(pokemon) {
     console.log("Attempting to remove " + pokemon.name + " from the active roster...");
 
     var newActivePokemon = this.state.activePokemon.slice();
     var removeSuccessful = false;
     for (var i = 0; i < this.state.activePokemon.length; i++) {
-      if (pokemon === this.state.activePokemon[i]) {
+      if (pokemon == this.state.activePokemon[i]) {
         newActivePokemon[i] = null;
         removeSuccessful = true;
         this.finishOptions();
         break;
       }
     }
-
-    console.log(newActivePokemon);
 
     this.setState({
       activePokemon: newActivePokemon,
@@ -138,6 +163,27 @@ class App extends Component {
       localStorage.setItem('myPokemon', JSON.stringify(this.state.myPokemon));
       console.log(removeSuccessful ? "Removed " + pokemon.name + " from the active roster..." : pokemon.name + " is already inactive");
     });
+  }
+
+  toggleSwap() {
+    let me = this.state.isSwapping
+    this.setState({
+      isSwapping: !me,
+    }, () => {
+      console.log(this.state.isSwapping)
+      return true;
+    })
+  }
+
+  async handleSwap(pokemon1, pokemon2) {
+    console.log(pokemon1.name, pokemon2.name)
+    if (pokemon1.isActive) {
+      await this.removeActivePokemon(pokemon1)
+      await this.addActivePokemon(pokemon2)
+    } else {
+      await this.removeActivePokemon(pokemon2)
+      await this.addActivePokemon(pokemon1)
+    }
   }
 
   removePokemon(pokemon) {
@@ -173,33 +219,37 @@ class App extends Component {
     if (pokemon === this.state.currentPokemonForOptions || this.state.currentPokemonForOptions === null) {
       var entryOptionsDialog = document.getElementById("entry-options-dialog");
       this.setState({
-        showEntryOptionsDialog: !this.state.showEntryOptionsDialog,
-        currentPokemonForOptions: pokemon,
+        isSwapping: false
       }, () => {
-        if (this.state.showEntryOptionsDialog) {
-            console.log("Opening entry options...");
+          this.setState({
+          showEntryOptionsDialog: !this.state.showEntryOptionsDialog,
+          currentPokemonForOptions: pokemon,
+        }, () => {
+          if (this.state.showEntryOptionsDialog) {
+              console.log("Opening entry options...");
 
-            entryOptionsDialog.style.display = "block";
+              entryOptionsDialog.style.display = "block";
 
-            if (target.className === "entry-options-button") {
-              target.src = optionsButtonActive;
-            }
+              if (target.className === "entry-options-button") {
+                target.src = optionsButtonActive;
+              }
 
-            entryOptionsDialog.style.top = (anchor.y - 10).toString() + "px";
-        } else {
-            console.log("Closing entry options...");
-            entryOptionsDialog.style.display = "none";
+              entryOptionsDialog.style.top = (anchor.y - 10).toString() + "px";
+          } else {
+              console.log("Closing entry options...");
+              entryOptionsDialog.style.display = "none";
 
-            if (target.className === "entry-options-button") {
-              target.src = optionsButton;
-            }
+              if (target.className === "entry-options-button") {
+                target.src = optionsButton;
+              }
 
-            this.setState({
-              currentPokemonForOptions: null,
-            }, () => {
-              return true;
-            });
-        }
+              this.setState({
+                currentPokemonForOptions: null,
+              }, () => {
+                return true;
+              });
+          }
+        });
       });
     }
   }
@@ -219,39 +269,16 @@ class App extends Component {
     });
   }
 
-
-  // componentDidMount() {
-  //   // Additionally I could have just used an arrow function for the binding `this` to the component...
-  //   window.addEventListener("resize", this.updateDimensions);
-  // }
-  //
-  // updateDimensions() {
-  //   document.getElementById("my-pokemon-container").style.maxHeight = document.getElementById("grid").style.maxHeight;
-  //
-  //   console.log(document.getElementById("my-pokemon-container").style);
-  // }
-  //
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize", this.updateDimensions);
-  // }
-
-  render() {
-
-    return (
-      <div className="board">
-        <div id="active-pokemon-container" className="active-pokemon-container">
-          <ActiveBoard pokemon={this.state.activePokemon} onClick={this.toggleEntryOptions} ref={ (activePokemonContainer) => this.activePokemonContainer = activePokemonContainer}/>
-        </div>
-        <div id="my-pokemon-container" className="my-pokemon-container"  ref={ (myPokemonContainer) => this.myPokemonContainer = myPokemonContainer}>
-          <MyPokemon toggleAddPokemonDialog={() => this.toggleAddPokemonDialog()} removePokemon={this.removePokemon} toggleEntryOptions={this.toggleEntryOptions} myPokemon={this.state.myPokemon}/>
-          <EntryOptions removePokemon={this.removePokemon} setActive={this.addActivePokemon} removeActivePokemon={this.removeActivePokemon} pokemon={this.state.currentPokemonForOptions}/>
-          <AddPokemon addPokemon={this.addPokemon} listOfPokemon={this.state.listOfPokemon}/>
-        </div>
-      </div>
-    );
+  handleKeyPress(event) {
+    if (event.keyCode == 27) {
+      if (this.state.showEntryOptionsDialog) {
+        this.toggleEntryOptions()
+      }
+      if (this.state.showAddPokemonDialog) {
+        this.toggleAddPokemonDialog()
+      }
+    }
   }
-
-
 }
 
 function initPokemonList() {

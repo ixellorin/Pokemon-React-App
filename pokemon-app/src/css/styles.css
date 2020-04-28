@@ -18,6 +18,7 @@
   --my-pokemon-width: 280px;
   --board-width: calc(var(--active-grid-width) * 2 + var(--my-pokemon-width) + 60px);
   --board-height: calc(var(--my-pokemon-height) + 20px);
+  --entry-options-image-height: 50px;
 }
 html {
   margin: 0;
@@ -178,11 +179,10 @@ body {
 .grid-column.bottom.left {
   border-bottom: var(--grey-border);
   border-left: var(--grey-border);
-  border-right: 0px solid #292929;
   border-top: var(--grey-border);
   border-radius: 0px 0px 0px 5px;
+  border-right: 0px solid #292929;
 }
-
 
 .grid-column.bottom.right {
   border-bottom: var(--grey-border);
@@ -377,6 +377,7 @@ body {
   z-index: 2;
   position: absolute;
   padding-left: 10px;
+  padding-right: 10px;
   margin-left:10px;
   max-height: 44vw;
   width: 225px;
@@ -395,7 +396,13 @@ body {
 }
 
 .entry-options-header {
+  vertical-align: top ! important;
   display: inline;
+  margin-bottom: 0px;
+}
+.entry-options-header-text {
+  vertical-align: bottom ! important;
+  font-size: 25px;
 }
 
 .entry-option {
@@ -404,22 +411,15 @@ body {
 }
 
 .entry-options-image {
-  height: 40px;
+  vertical-align: top ! important;
+  height: var(--entry-options-image-height);
 }
 
-.entry-options-active-selector {
-  padding-left: 5px;
-  height: 15px;
-  visibility: hidden;
+.entry-options-header {
+  top: 0px;
 }
 
-.entry-options-remove-selector {
-  padding-left: 5px;
-  height: 15px;
-  visibility: hidden;
-}
-
-.entry-options-inactive-selector {
+.entry-options-selector {
   padding-left: 5px;
   height: 15px;
   visibility: hidden;

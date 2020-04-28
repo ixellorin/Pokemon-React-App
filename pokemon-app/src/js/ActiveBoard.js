@@ -61,7 +61,6 @@ class ActiveBoard extends React.Component {
   }
 
   getImage(i) {
-    console.log(this.props.pokemon);
     if (this.props.pokemon[i] == null) {
       return <img className="grid-image" src={filler} />;
     } else {
