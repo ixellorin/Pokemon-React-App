@@ -272,7 +272,11 @@ class App extends Component {
   handleKeyPress(event) {
     if (event.keyCode == 27) {
       if (this.state.showEntryOptionsDialog) {
-        this.toggleEntryOptions()
+        this.toggleEntryOptions(this.state.currentPokemonForOptions, event)
+        let optionsButtons = document.getElementsByClassName("entry-options-button")
+        for (let i = 0; i < optionsButtons.length; i++) {
+            optionsButtons[i].src = optionsButton;
+          }
       }
       if (this.state.showAddPokemonDialog) {
         this.toggleAddPokemonDialog()
