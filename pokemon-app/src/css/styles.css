@@ -176,7 +176,7 @@ body {
   border-top: 0px solid #292929;
 }
 
-/* .grid-column.bottom.left {
+.grid-column.bottom.left {
   border-bottom: var(--grey-border);
   border-left: var(--grey-border);
   border-top: var(--grey-border);
@@ -189,7 +189,7 @@ body {
   border-left: var(--grey-border);
   border-right: var(--grey-border);
   border-top: var(--grey-border);
-} */
+}
 
 .grid-image {
   display: block;
