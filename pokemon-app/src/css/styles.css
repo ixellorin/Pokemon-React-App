@@ -154,6 +154,16 @@ body {
   border-top: var(--grey-border);
 }
 
+.grid-column.middle {
+  border-top: 0px solid #292929;
+  border-bottom: 0px solid #292929;
+}
+
+.grid-column.bottom {
+  border-top: var(--grey-border);
+  border-bottom: var(--grey-border);
+}
+
 .grid-column.top.left {
   border-left: var(--grey-border);
   border-right: 0px solid #292929;
@@ -173,23 +183,17 @@ body {
 .grid-column.middle.right {
   border-left: var(--grey-border);
   border-right: var(--grey-border);
-  border-top: 0px solid #292929;
 }
-
 .grid-column.bottom.left {
   border-right: 0px solid #292929;
-  border-bottom: var(--grey-border);
   border-left: var(--grey-border);
-  border-top: var(--grey-border);
-  border-radius: 0px 0px 0px 5px;
 }
 
 .grid-column.bottom.right {
-  border-top: 0px solid #292929;
-  border-bottom: var(--grey-border);
   border-left: var(--grey-border);
   border-right: var(--grey-border);
 }
+
 
 .grid-image {
   display: block;
