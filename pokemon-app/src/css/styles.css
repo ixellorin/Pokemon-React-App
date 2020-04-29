@@ -383,7 +383,7 @@ body {
   padding-left: 10px;
   padding-right: 10px;
   margin-left:10px;
-  max-height: 44vw;
+  max-height: 640px;
   width: 225px;
   overflow-y: scroll;
 }
@@ -427,4 +427,9 @@ body {
   padding-left: 5px;
   height: 15px;
   visibility: hidden;
+}
+
+.swap-pokemon-list {
+  max-height: 400px;
+  overflow-y: scroll;
 }
